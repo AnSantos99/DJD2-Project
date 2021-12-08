@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum PuzzleItemType
 {
-    PICKABLE,
-    Magnet,
-    Ball,
-    Fuse
+    PICKABLE, 
+    INTERACT_ONCE, 
+    INTERACT_MULTIPLE, 
+    INDIRECT
 }
