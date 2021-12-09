@@ -5,25 +5,45 @@ using UnityEngine;
 public class PuzzleItems : MonoBehaviour
 {
     // Store name of item
+    [SerializeField]
     private string itemName;
+
+    [SerializeField]
+    private string[] interactionText;
 
     // Set type of the item
     [SerializeField]
     private PuzzleItemType puzzleItemType;
 
+    [SerializeField]
+    private bool isActive;
+
     // Set item Sprite of item to be shown on inventory
     [SerializeField]
     private Sprite itemSprite;
 
-    public PuzzleItems(string itemName, PuzzleItemType puzzleItemType, 
-        Sprite itemSprite) 
-    {
-        this.itemName = itemName;
-        this.puzzleItemType = puzzleItemType;
-        this.itemSprite = itemSprite;
-    }
+    [SerializeField]
+    private PuzzleItems[] interactionChain;
 
-    public string ItemName { get => itemName; }
+    [SerializeField] 
+    private PuzzleItems[] requirements;
+
+    [SerializeField] 
+    private PuzzleItems[] activationChain;
+
+
+    public bool IsActive => isActive;
+
+    public PuzzleItemType InterActionType { get => puzzleItemType; }
+
+    public Sprite GetIcon { get => itemSprite; }
+
+    //public string GetRequirementText { get => }
+
+
+
+
+
 
 
 }

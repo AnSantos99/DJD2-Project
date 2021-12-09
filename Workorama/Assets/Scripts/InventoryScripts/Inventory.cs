@@ -2,36 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    private PuzzleItems lever;
-
+    /// <summary>
+    /// To store picked up items in a collection
+    /// </summary>
     private ICollection<PuzzleItems> puzzleItemsList;
 
-    // Start is called before the first frame update
-    void Start()
+    // Variable of type canvasManager
+
+    public Inventory()
     {
-        lever = new PuzzleItems("Lever", PuzzleItemType.PICKABLE, null);
-
-        puzzleItemsList = new List<PuzzleItems>();
-
-        puzzleItemsList.Add(lever);
-
-        foreach (PuzzleItems item in puzzleItemsList)
-        {
-            Debug.Log(item.ItemName);
-        }
-        
+        puzzleItemsList = new List<PuzzleItems>();   
     }
 
+    /// <summary>
+    /// Add Object to inventory
+    /// </summary>
+    /// <param name="puzzleItem"></param>
     private void AddToIventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Add(puzzleItem);
+        // Make it appear in canvas
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Remove object from inventory
+    /// </summary>
+    /// <param name="puzzleItem"></param>
+    private void RemoveFromIventory(PuzzleItems puzzleItem) 
     {
-        
+        puzzleItemsList.Remove(puzzleItem);
+
+        // Make it dissapear from canvas
     }
+
+    /// <summary>
+    /// Check if there is any item inside the inventory list
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    private bool CheckItemInInventory(PuzzleItems item) 
+        => puzzleItemsList.Contains(item);
 }
