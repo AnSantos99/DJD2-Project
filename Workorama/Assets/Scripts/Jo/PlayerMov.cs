@@ -13,8 +13,6 @@ public class PlayerMov : MonoBehaviour
 
     private float movementSpeed;
 
-    private bool walking;
-
     private CharacterController charController;
 
     [SerializeField]private AnimationCurve jumpFallOff;
@@ -23,24 +21,15 @@ public class PlayerMov : MonoBehaviour
 
     private bool isJumping;
 
-   private Animator _animator;
 
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
-        _animator = GetComponentInChildren<Animator>();
-        walking = false;
     }
 
     private void Update()
     {
         PlayerMovement();
-
-        if(walking == false)
-        { 
-            _animator.SetBool("Walk", false);
-            _animator.SetBool("Run", false);
-        }
     }
 
     private void PlayerMovement()
@@ -61,17 +50,11 @@ public class PlayerMov : MonoBehaviour
     {
         if (Input.GetKey(runKey))
         {
-            walking = true;
-            _animator.SetBool("Run", true);
-            _animator.SetBool("Walk", false);
             movementSpeed = Mathf.Lerp(movementSpeed, runSpeed, Time.deltaTime * runBuildUpSpeed);
         }
 
         else
         {
-            _animator.SetBool("Walk", true);
-            _animator.SetBool("Run", false);
-            walking = true;
             movementSpeed = Mathf.Clamp(movementSpeed, walkSpeed, Time.deltaTime * runBuildUpSpeed);
         }
     }
@@ -82,6 +65,7 @@ public class PlayerMov : MonoBehaviour
         {
             isJumping = true;
             StartCoroutine(JumpEvent());
+            Debug.Log("Is jumping");
         }
     }
 
