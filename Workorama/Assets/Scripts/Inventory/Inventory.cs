@@ -20,7 +20,7 @@ public class Inventory
     /// Add Object to inventory
     /// </summary>
     /// <param name="puzzleItem"></param>
-    private void AddToIventory(PuzzleItems puzzleItem) 
+    public void AddToInventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Add(puzzleItem);
         // Make it appear in canvas
@@ -30,18 +30,22 @@ public class Inventory
     /// Remove object from inventory
     /// </summary>
     /// <param name="puzzleItem"></param>
-    private void RemoveFromIventory(PuzzleItems puzzleItem) 
+    public void RemoveFromInventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Remove(puzzleItem);
 
         // Make it dissapear from canvas
     }
 
+    
+    public bool IsInInventory(PuzzleItems item) 
+        => puzzleItemsList.Contains(item);
+
     /// <summary>
     /// Check if there is any item inside the inventory list
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    private bool CheckItemInInventory(PuzzleItems item) 
+    public bool CheckItemInInventory(PuzzleItems item) 
         => puzzleItemsList.Contains(item);
 }

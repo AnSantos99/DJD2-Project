@@ -355,6 +355,8 @@ GameObject:
   - component: {fileID: 1446286206}
   - component: {fileID: 1446286205}
   - component: {fileID: 1446286209}
+  - component: {fileID: 1446286211}
+  - component: {fileID: 1446286210}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -451,17 +453,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446286204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e7e290b38758242bcdac7ce4671abc, type: 3}
+  m_Script: {fileID: 11500000, guid: b7adc1a18abd73d4a851263bd92bb70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 69710015}
-  walkSpeed: 5
-  runSpeed: 10
-  crouchSpeed: 3
-  jumpForce: 10
-  isGrounded: 0
-  isCrouched: 0
-  canJump: 0
+  walkSpeed: 14.8
+  runSpeed: 0
+  runBuildUpSpeed: 0
+  runKey: 0
+--- !u!143 &1446286210
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446286204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1446286211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446286204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e8d39a1baf91b429ed098be88838d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseXInputName: Mouse X
+  mouseYInputName: Mouse Y
+  mouseSensitivity: 2.6
+  playerBody: {fileID: 1446286208}
 --- !u!1 &1686707758
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686707758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1446286208}
