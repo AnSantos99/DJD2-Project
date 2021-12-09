@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMov : MonoBehaviour
 {
-    [SerializeField]private string horizontalInputName;
-    [SerializeField]private string verticalInputName;
+    private string horizontalInputName = "Horizontal";
+    private string verticalInputName = "Vertical";
 
     [SerializeField]private float walkSpeed, runSpeed;
     [SerializeField]private float runBuildUpSpeed;
@@ -15,11 +15,14 @@ public class PlayerMov : MonoBehaviour
 
     private CharacterController charController;
 
-    [SerializeField]private AnimationCurve jumpFallOff;
-    [SerializeField]private float jumpMultiplier;
-    [SerializeField]private KeyCode jumpKey;
+    //In case we decide to add jump
+    //its not working for now though
 
-    private bool isJumping;
+    //[SerializeField]private AnimationCurve jumpFallOff;
+    //[SerializeField]private float jumpMultiplier;
+    //[SerializeField]private KeyCode jumpKey;
+
+    //private bool isJumping;
 
 
     private void Awake()
@@ -43,7 +46,7 @@ public class PlayerMov : MonoBehaviour
         charController.SimpleMove(Vector3.ClampMagnitude(forwardMovement + rightMovement, 1.0f) * movementSpeed);
 
         SetMovementSpeed();
-        JumpInput();
+        //JumpInput();
     }
 
     private void SetMovementSpeed()
@@ -59,30 +62,30 @@ public class PlayerMov : MonoBehaviour
         }
     }
 
-    private void JumpInput()
-    {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
-        {
-            isJumping = true;
-            StartCoroutine(JumpEvent());
-            Debug.Log("Is jumping");
-        }
-    }
+    //private void JumpInput()
+    //{
+    //    if(Input.GetKeyDown(jumpKey) && !isJumping)
+    //    {
+    //        isJumping = true;
+    //        StartCoroutine(JumpEvent());
+    //        Debug.Log("Is jumping");
+    //    }
+    //}
 
-    private IEnumerator JumpEvent()
-    {
-        charController.slopeLimit = 90.0f;
-        float timeInAir = 0.0f;
+    //private IEnumerator JumpEvent()
+    //{
+    //    charController.slopeLimit = 90.0f;
+    //    float timeInAir = 0.0f;
 
-        do
-        {
-            float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime;
-            yield return null;
-        } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
+    //    do
+    //    {
+    //        float jumpForce = jumpFallOff.Evaluate(timeInAir);
+    //        charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+    //        timeInAir += Time.deltaTime;
+    //        yield return null;
+    //    } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
 
-        charController.slopeLimit = 45.0f;
-        isJumping = false;
-    }
+    //    charController.slopeLimit = 45.0f;
+    //    isJumping = false;
+    //}
 }
