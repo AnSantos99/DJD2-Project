@@ -9,46 +9,81 @@ public class PuzzleItems : MonoBehaviour
     private string itemName;
 
     [SerializeField]
-    private string[] interactionText;
+    private bool isActive;
 
     // Set type of the item
     [SerializeField]
     private PuzzleItemType puzzleItemType;
-
-    [SerializeField]
-    private bool isActive;
 
     // Set item Sprite of item to be shown on inventory
     [SerializeField]
     private Sprite itemSprite;
 
     [SerializeField]
-    private PuzzleItems[] interactionChain;
+    private string requirementText;
 
-    [SerializeField] 
+    [SerializeField]
     private PuzzleItems[] requirements;
 
-    [SerializeField] 
+    [SerializeField]
     private PuzzleItems[] activationChain;
 
     [SerializeField]
-    private string requirementTexts; 
+    private string[] interactionTexts;
+
+    [SerializeField]
+    private PuzzleItems[] interactionChain;
+
+
 
     private int curInteractionTextId;
 
 
+
+    /*-------------------------------------------------------------------------
+     --------------------------------------------------------------------------
+     ------------------------------------------------------------------------*/
+
+    /// <summary>
+    /// Check if item is active
+    /// </summary>
+    /// <returns></returns>
     public bool IsActive() => isActive;
 
+    /// <summary>
+    /// Get Puzzle item type
+    /// </summary>
+    /// <returns> enum of puzzle item type </returns>
     public PuzzleItemType InterActionType() => puzzleItemType;
 
+    /// <summary>
+    /// Get icon of item
+    /// </summary>
+    /// <returns> icon for inventory slot </returns>
     public Sprite GetIcon() => itemSprite; 
     
-    public string GetRequirementText() => requirementTexts;
+    /// <summary>
+    /// Get text show player what is required to get that item
+    /// </summary>
+    /// <returns> information of item status </returns>
+    public string GetRequirementText() => requirementText;
     
-    public string GetCurrentRequirementText() => interactionText[curInteractionTextId];
+    /// <summary>
+    /// Gets the current requirement text
+    /// </summary>
+    /// <returns></returns>
+    public string GetCurrentRequirementText() 
+        => interactionTexts[curInteractionTextId];
 
+    /// <summary>
+    /// Puzzle requirements to be able to solve the puzzle
+    /// </summary>
+    /// <returns> requirements that are needed to solve puzzle </returns>
     public PuzzleItems[] PuzzleRequirement() => requirements;
 
+    /// <summary>
+    /// To activate animation of items
+    /// </summary>
     public void Activate()
     {
         isActive = true;
@@ -56,6 +91,9 @@ public class PuzzleItems : MonoBehaviour
         // ANimator
     }
 
+    /// <summary>
+    /// Interaction with different types of items
+    /// </summary>
     public void Interact()
     {
         if(isActive)
@@ -73,7 +111,7 @@ public class PuzzleItems : MonoBehaviour
 
             else if(puzzleItemType == PuzzleItemType.INTERACT_MULTIPLE)
                 curInteractionTextId = (curInteractionTextId + 1) 
-                    % interactionText.Length;
+                    % interactionTexts.Length;
 
             ProcessActivationChain();
             ProcessInteractionChain();
