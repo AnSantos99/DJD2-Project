@@ -7,10 +7,9 @@ public class Inventory : MonoBehaviour
     /// To store picked up items in a collection
     /// </summary>
     private List<PuzzleItems> puzzleItemsList;
-
     private CanvasManager canvasManager;
 
-    public void Start()
+    public Inventory()
     {
         puzzleItemsList = new List<PuzzleItems>();
     }
@@ -21,10 +20,16 @@ public class Inventory : MonoBehaviour
     /// <param name="puzzleItem"></param>
     public void AddToInventory(PuzzleItems puzzleItem) 
     {
+        Debug.Log(puzzleItemsList.Count);
+
         puzzleItemsList.Add(puzzleItem);
-        canvasManager.SetInventoryIcon
-            (puzzleItemsList.Count - 1, puzzleItem.GetIcon());
+
+        Debug.Log(puzzleItemsList.Count);
+
+
         // Make it appear in canvas
+        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
+        
     }
 
     /// <summary>
@@ -35,6 +40,7 @@ public class Inventory : MonoBehaviour
     {
         puzzleItemsList.Remove(puzzleItem);
 
+        // Clear it from canvas
         canvasManager.ClearInventoryIcons();
 
         for (int i = 0; i < puzzleItemsList.Count; ++i)

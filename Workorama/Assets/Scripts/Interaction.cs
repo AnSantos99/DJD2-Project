@@ -10,7 +10,6 @@ public class Interaction : MonoBehaviour
     private CanvasManager canvasManager;
 
     private Transform cameraTransform;
-
     private PuzzleItems currentInteractiveItems;
 
     private Inventory inventory;
@@ -24,6 +23,7 @@ public class Interaction : MonoBehaviour
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
         currentInteractiveItems = null;
+
         inventory = new Inventory();
     }
 
