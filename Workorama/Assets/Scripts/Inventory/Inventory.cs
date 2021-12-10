@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,13 +6,22 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// To store picked up items in a collection
     /// </summary>
-    private ICollection<PuzzleItems> puzzleItemsList;
+    private List<PuzzleItems> puzzleItemsList;
 
-    // Variable of type canvasManager
+    private CanvasManager canvasManager;
+    private Canvas canvas;
 
     public Inventory()
     {
-        puzzleItemsList = new List<PuzzleItems>();   
+        puzzleItemsList = new List<PuzzleItems>();
+
+        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
+        canvasManager = canvas.GetComponent<CanvasManager>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     /// <summary>
@@ -23,7 +31,9 @@ public class Inventory : MonoBehaviour
     public void AddToInventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Add(puzzleItem);
+
         // Make it appear in canvas
+        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
     }
 
     /// <summary>
@@ -34,12 +44,12 @@ public class Inventory : MonoBehaviour
     {
         puzzleItemsList.Remove(puzzleItem);
 
-        // Make it dissapear from canvas
-    }
+        // Clear it from canvas
+        canvasManager.ClearInventoryIcons();
 
-    
-    public bool IsInInventory(PuzzleItems item) 
-        => puzzleItemsList.Contains(item);
+        for (int i = 0; i < puzzleItemsList.Count; ++i)
+            canvasManager.SetInventoryIcon(i, puzzleItemsList[i].GetIcon());
+    }
 
     /// <summary>
     /// Check if there is any item inside the inventory list
