@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
     private const float INTERACTION_DISTANCE = 2.0f;
 
     [SerializeField]
-    private CanvasManager canvasManager;
+    public CanvasManager canvasManager;
 
     private Transform cameraTransform;
     private PuzzleItems currentInteractiveItems;

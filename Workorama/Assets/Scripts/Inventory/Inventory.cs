@@ -9,10 +9,14 @@ public class Inventory : MonoBehaviour
     private List<PuzzleItems> puzzleItemsList;
 
     private CanvasManager canvasManager;
+    private Canvas canvas;
 
     public Inventory()
     {
         puzzleItemsList = new List<PuzzleItems>();
+
+        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
+        canvasManager = canvas.GetComponent<CanvasManager>();
     }
 
     /// <summary>
@@ -21,16 +25,10 @@ public class Inventory : MonoBehaviour
     /// <param name="puzzleItem"></param>
     public void AddToInventory(PuzzleItems puzzleItem) 
     {
-        Debug.Log(puzzleItemsList.Count);
-
         puzzleItemsList.Add(puzzleItem);
-
-        Debug.Log(puzzleItemsList.Count);
-
 
         // Make it appear in canvas
         canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
-
     }
 
     /// <summary>
