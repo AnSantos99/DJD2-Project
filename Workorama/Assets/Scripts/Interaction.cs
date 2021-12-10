@@ -12,8 +12,6 @@ public class Interaction : MonoBehaviour
     private Transform cameraTransform;
     private PuzzleItems currentInteractiveItems;
 
-    private List<Inventory> itemsInIventory;
-
     private Inventory inventory;
 
     private bool hasRequirements;
@@ -25,13 +23,13 @@ public class Interaction : MonoBehaviour
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
         currentInteractiveItems = null;
-        itemsInIventory = new List<Inventory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        LockForInteractive();
+        CheckForPlayerInteraction();
     }
 
     private void LockForInteractive()
@@ -90,7 +88,6 @@ public class Interaction : MonoBehaviour
                 PickCurrentInteractive();
             else
                 InteractWithCurrentInteractive();
-
         }
     }
 

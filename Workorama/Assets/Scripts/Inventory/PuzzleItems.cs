@@ -38,6 +38,11 @@ public class PuzzleItems : MonoBehaviour
 
     private int curInteractionTextId;
 
+    private void Start() 
+    {
+        curInteractionTextId = 0;
+    }
+
 
 
     /*-------------------------------------------------------------------------
