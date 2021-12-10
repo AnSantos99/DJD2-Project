@@ -15,6 +15,11 @@ public class Inventory : MonoBehaviour
         puzzleItemsList = new List<PuzzleItems>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     /// <summary>
     /// Add Object to inventory
     /// </summary>

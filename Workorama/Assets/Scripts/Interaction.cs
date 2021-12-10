@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
     private CanvasManager canvasManager;
 
     private Transform cameraTransform;
+
     private PuzzleItems currentInteractiveItems;
 
     private Inventory inventory;
