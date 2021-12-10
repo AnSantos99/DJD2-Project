@@ -35,11 +35,14 @@ public class PuzzleItems : MonoBehaviour
     private PuzzleItems[] interactionChain;
 
 
-
+    private Animator animator;
+    private Transform transform;
     private int curInteractionTextId;
 
     private void Start() 
     {
+        animator = GetComponent<Animator>();
+        transform = GetComponent<Transform>();
         curInteractionTextId = 0;
     }
 
@@ -103,9 +106,15 @@ public class PuzzleItems : MonoBehaviour
     {
         if(isActive)
         {
-            //if() animator != null interact
+            if(puzzleItemType == PuzzleItemType.INDIRECT) 
+            {
+                if (itemName == "Building")
+                {
+                    RorateBuilding();
+                }
+            }
 
-            if(puzzleItemType == PuzzleItemType.PICKABLE)
+            else if(puzzleItemType == PuzzleItemType.PICKABLE)
             {
                 GetComponent<Collider>().enabled = false;
                 gameObject.SetActive(false);
@@ -139,5 +148,11 @@ public class PuzzleItems : MonoBehaviour
             for(int i = 0; i < interactionChain.Length; i++)
                 interactionChain[i].Interact();
         }
+    }
+
+
+    private void RorateBuilding()
+    {
+        
     }
 }
