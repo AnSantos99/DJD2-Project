@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     /// To store picked up items in a collection
     /// </summary>
     private List<PuzzleItems> puzzleItemsList;
+
     private CanvasManager canvasManager;
 
     public Inventory()
@@ -29,7 +30,7 @@ public class Inventory : MonoBehaviour
 
         // Make it appear in canvas
         canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
-        
+
     }
 
     /// <summary>
