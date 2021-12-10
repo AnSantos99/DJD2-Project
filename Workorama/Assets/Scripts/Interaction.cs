@@ -76,7 +76,7 @@ public class Interaction : MonoBehaviour
 
         if (requirements != null)
             for (int i = 0; i < requirements.Length; ++i)
-                if (!inventory.IsInInventory(requirements[i]))
+                if (!inventory.CheckItemInInventory(requirements[i]))
                     return false;
 
         hasRequirements = true;
