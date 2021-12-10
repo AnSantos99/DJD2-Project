@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    private const float INTERACTION_DISTANCE = 1.0f;
+    private const float INTERACTION_DISTANCE = 2.0f;
 
     [SerializeField]
     private CanvasManager canvasManager;
 
     private Transform cameraTransform;
+
     private PuzzleItems currentInteractiveItems;
 
     private Inventory inventory;
@@ -23,6 +24,7 @@ public class Interaction : MonoBehaviour
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
         currentInteractiveItems = null;
+        inventory = new Inventory();
     }
 
     // Update is called once per frame
@@ -34,18 +36,19 @@ public class Interaction : MonoBehaviour
 
     private void LockForInteractive()
     {
-        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward,
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
         out RaycastHit hitInfo, INTERACTION_DISTANCE))
         {
             PuzzleItems interactiveItems = hitInfo.collider.GetComponent<PuzzleItems>();
 
-            if(interactiveItems == null || !interactiveItems.IsActive())
-            ClearCurrentInteractive();
+            if (interactiveItems == null || !interactiveItems.IsActive())
+                ClearCurrentInteractive();
 
-            else if(interactiveItems != currentInteractiveItems)
+            else if (interactiveItems != currentInteractiveItems)
                 SetCurrentInteractive(interactiveItems);
-
         }
+        else
+            ClearCurrentInteractive();
     }
 
     public void ClearCurrentInteractive()
