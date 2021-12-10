@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69746f001df0c1042b12123c44a5b17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasManager: {fileID: 0}
+  canvasManager: {fileID: 1372635768022497401}
 --- !u!4 &326385763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5603164328087933252, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
@@ -1466,6 +1466,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1477028357}
     m_Modifications:
+    - target: {fileID: 4277970933502175940, guid: 690e135c4bf4ce04a9a3063f2cd4960f, type: 3}
+      propertyPath: itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3178fc148596da4439905709dc144dd3, type: 3}
     - target: {fileID: 4277970933502175946, guid: 690e135c4bf4ce04a9a3063f2cd4960f, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1474,6 +1478,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8168474513231664771, guid: 690e135c4bf4ce04a9a3063f2cd4960f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dfceeaaa6a2997b40ab7543addf084d6, type: 2}
     - target: {fileID: 8168474513305139908, guid: 690e135c4bf4ce04a9a3063f2cd4960f, type: 3}
       propertyPath: m_Name
       value: Fuse
