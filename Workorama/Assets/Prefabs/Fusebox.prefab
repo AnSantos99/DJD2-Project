@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 851341055426212334}
   - component: {fileID: 80793955}
   - component: {fileID: 80793957}
-  - component: {fileID: 80793956}
+  - component: {fileID: 6872215519005219622}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -153,7 +153,7 @@ Animator:
   m_GameObject: {fileID: 2037172793763176455}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7931aad85e2ff3545a18e4f68e826b78, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -162,7 +162,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &80793956
+--- !u!114 &6872215519005219622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,11 +171,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2037172793763176455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e49c4c145ab791e4bb067ae0950f565d, type: 3}
+  m_Script: {fileID: 11500000, guid: d5d3ebe1a91ee3341a31f0c4491f8798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  interactionText: Open fusebox
+  itemName: 
+  isActive: 0
+  puzzleItemType: 2
+  itemSprite: {fileID: 0}
+  requirementText: 
+  requirements: []
+  activationChain: []
+  interactionTexts: []
   interactionChain: []
 --- !u!1 &5098911167332378386
 GameObject:
