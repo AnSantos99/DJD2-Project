@@ -1537,6 +1537,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6872215519005219622, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872215519005219622, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
+      propertyPath: interactionTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872215519005219622, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
+      propertyPath: interactionTexts.Array.data[0]
+      value: Open Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872215519005219622, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
+      propertyPath: interactionTexts.Array.data[1]
+      value: Close Door
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 80793957, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
@@ -1744,7 +1760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5603164328087933252, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.4
+      value: 25.6
       objectReference: {fileID: 0}
     - target: {fileID: 5603164328087933252, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1877,34 +1893,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728191226}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1871327338 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2037172793763176455, guid: 2455c1ecac2baa44ca48d009c176027a, type: 3}
-  m_PrefabInstance: {fileID: 1477028355}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1871327341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871327338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d3ebe1a91ee3341a31f0c4491f8798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: 
-  isActive: 1
-  puzzleItemType: 2
-  itemSprite: {fileID: 0}
-  requirementText: 
-  requirements: []
-  activationChain: []
-  interactionTexts:
-  - Open Door
-  - Close Door
-  interactionChain: []
 --- !u!1 &2071177584
 GameObject:
   m_ObjectHideFlags: 0
