@@ -153,6 +153,6 @@ public class PuzzleItems : MonoBehaviour
 
     private void RorateBuilding()
     {
-        
+        transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
     }
 }
