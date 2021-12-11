@@ -97,10 +97,10 @@ public class CameraMovement : MonoBehaviour
 
     private void SwitchTo2D()
     {
-        float northDif = transform.position.x - helpCamNorth.position.x; 
-        float southDif = transform.position.x - helpCamSouth.position.x; 
-        float eastDif = transform.position.x - helpCamEast.position.x; 
-        float westDif = transform.position.x - helpCamWest.position.x; 
+        float northDif = cam2D.position.x - helpCamNorth.position.x; 
+        float southDif = cam2D.position.x - helpCamSouth.position.x; 
+        float eastDif = cam2D.position.x - helpCamEast.position.x; 
+        float westDif = cam2D.position.x - helpCamWest.position.x; 
 
         if (northDif == southDif)
         {
@@ -117,11 +117,11 @@ public class CameraMovement : MonoBehaviour
         {
             if (northDif > southDif)
             {
-                SwitchNorth();
+                SwitchSouth();
             }
             else
             {
-                SwitchSouth();
+                SwitchNorth();
             }
         }
         else
