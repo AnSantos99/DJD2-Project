@@ -44,7 +44,7 @@ public class PuzzleItems : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
-        camSwitch = GetComponent<CameraMovement>();
+        camSwitch = this.gameObject.GetComponent<CameraMovement>();
         curInteractionTextId = 0;
     }
 
@@ -116,15 +116,7 @@ public class PuzzleItems : MonoBehaviour
                 }
                 if (itemName == "Camera")
                 {
-                    if (Check2DSwitch())
-                    {
-                        SwitchTo2D();
-                        //Stop Player movement, cam movement
-                    }
-                    else
-                    {
-                        SwitchTo3D();
-                    }
+                    camSwitch.SwitchCam();
                 }
             }
 
@@ -168,44 +160,5 @@ public class PuzzleItems : MonoBehaviour
     private void RorateBuilding()
     {
         transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
-    }
-
-    private bool Check2DSwitch()
-    {
-        return true;
-        /*if (transform.position != new Vector3(270,8,0))
-        {
-            return true;
-        }
-        return false;*/
-    }
-
-    private void SwitchTo2D()
-    {
-        if (this.gameObject.layer == 6)
-        {
-            camSwitch.SwitchNorth();
-        }
-        else if (this.gameObject.layer == 7)
-        {
-            camSwitch.SwitchSouth();
-        }
-        else if (this.gameObject.layer == 8)
-        {
-            camSwitch.SwitchEast();
-        }
-        else if (this.gameObject.layer == 9)
-        {
-            camSwitch.SwitchWest();
-        }
-        else
-        {
-            Debug.Log("Window in the incorrect layer: " + this.gameObject);
-        }
-    }
-
-    private void SwitchTo3D()
-    {
-        camSwitch.ReturnToPlayer();
     }
 }

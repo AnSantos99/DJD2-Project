@@ -295,8 +295,6 @@ GameObject:
   - component: {fileID: 168015653}
   - component: {fileID: 168015655}
   - component: {fileID: 168015654}
-  - component: {fileID: 168015656}
-  - component: {fileID: 168015657}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -369,45 +367,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &168015656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168015652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b553484c07146df880a55f7be73502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam2D: {fileID: 696109717}
-  player: {fileID: 326385763}
-  helpCamNorth: {fileID: 338389253}
-  helpCamSouth: {fileID: 1610211221}
-  helpCamEast: {fileID: 1507626770}
-  helpCamWest: {fileID: 1244481181}
---- !u!114 &168015657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168015652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5d3ebe1a91ee3341a31f0c4491f8798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Camera
-  isActive: 1
-  puzzleItemType: 3
-  itemSprite: {fileID: 0}
-  requirementText: 
-  requirements: []
-  activationChain: []
-  interactionTexts: []
-  interactionChain: []
 --- !u!1 &180718466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,6 +3060,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1230286117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5603164328248536050, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
+  m_PrefabInstance: {fileID: 1686636036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1230286122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230286117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d3ebe1a91ee3341a31f0c4491f8798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Camera
+  isActive: 1
+  puzzleItemType: 3
+  itemSprite: {fileID: 0}
+  requirementText: 
+  requirements: []
+  activationChain: []
+  interactionTexts: []
+  interactionChain: []
+--- !u!114 &1230286123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230286117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b553484c07146df880a55f7be73502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam2D: {fileID: 696109717}
+  player: {fileID: 326385763}
+  helpCamNorth: {fileID: 338389253}
+  helpCamSouth: {fileID: 1610211221}
+  helpCamEast: {fileID: 1507626770}
+  helpCamWest: {fileID: 1244481181}
 --- !u!1 &1232995912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4551,26 +4554,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
-      propertyPath: east
-      value: 
-      objectReference: {fileID: 696109717}
-    - target: {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
-      propertyPath: west
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
-      propertyPath: north
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
-      propertyPath: south
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 326385763}
     - target: {fileID: 5603164328087933250, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4619,8 +4602,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5119311537455309318, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32abbc64a9c152b4d81d65c440a57e04, type: 3}
 --- !u!1 &1697896081
 GameObject:
@@ -6953,7 +6935,7 @@ PrefabInstance:
     - target: {fileID: 7007210550500972875, guid: 35874ea053f7d4d88af8c5aa52fe6cd0, type: 3}
       propertyPath: interactionChain.Array.data[0]
       value: 
-      objectReference: {fileID: 168015657}
+      objectReference: {fileID: 1230286122}
     - target: {fileID: 7772638865213766782, guid: 35874ea053f7d4d88af8c5aa52fe6cd0, type: 3}
       propertyPath: m_Name
       value: LookWindow

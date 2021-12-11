@@ -164,7 +164,6 @@ GameObject:
   - component: {fileID: 5603164328248536048}
   - component: {fileID: 5603164328248536049}
   - component: {fileID: 5603164328248536054}
-  - component: {fileID: 5119311537455309318}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -253,23 +252,6 @@ MonoBehaviour:
   mouseYInputName: Mouse Y
   mouseSensitivity: 200
   playerBody: {fileID: 5603164328087933252}
---- !u!114 &5119311537455309318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5603164328248536050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b553484c07146df880a55f7be73502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  north: {fileID: 0}
-  south: {fileID: 0}
-  east: {fileID: 0}
-  west: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &5603164329416566549
 GameObject:
   m_ObjectHideFlags: 0
