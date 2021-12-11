@@ -66,7 +66,7 @@ public class CameraMovement : MonoBehaviour
 
     public void ReturnToPlayer()
     {
-        transform.position = player.position;
+        transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
         transform.rotation = player.rotation;
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;
@@ -88,12 +88,11 @@ public class CameraMovement : MonoBehaviour
 
     private bool Check2DSwitch()
     {
-        return true;
-        /*if (transform.position != new Vector3(270,8,0))
+        if (transform.position.x < 250)
         {
             return true;
         }
-        return false;*/
+        return false;
     }
 
     private void SwitchTo2D()
@@ -138,6 +137,8 @@ public class CameraMovement : MonoBehaviour
     private void SwitchTo3D()
     {
         ReturnToPlayer();
+        playerLook.enabled = true;
+        playerMov.enabled = true;
     }
 
 
