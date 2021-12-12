@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
 
     public Inventory()
     {
+
+        //puzzleItemsList = GetComponent<List<PuzzleItems>>();
         puzzleItemsList = new List<PuzzleItems>();
 
         canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
@@ -23,6 +25,7 @@ public class Inventory : MonoBehaviour
     {
         
     }
+
 
     /// <summary>
     /// Add Object to inventory
