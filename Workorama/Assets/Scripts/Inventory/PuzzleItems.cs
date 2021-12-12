@@ -98,7 +98,7 @@ public class PuzzleItems : MonoBehaviour
     {
         isActive = true;
 
-        // ANimator
+        // ANimator if we have more parameters
     }
 
     /// <summary>
@@ -108,6 +108,8 @@ public class PuzzleItems : MonoBehaviour
     {
         if(isActive)
         {
+            if (animator != null) animator.SetTrigger("Interact");
+
             if(puzzleItemType == PuzzleItemType.INDIRECT) 
             {
                 if (itemName == "Building")
