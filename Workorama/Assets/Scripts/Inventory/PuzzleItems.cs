@@ -98,6 +98,8 @@ public class PuzzleItems : MonoBehaviour
     {
         isActive = true;
 
+        if (animator != null) animator.SetTrigger("Activate");
+
         // ANimator if we have more parameters
     }
 
