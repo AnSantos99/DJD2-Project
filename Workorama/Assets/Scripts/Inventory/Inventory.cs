@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
     /// <summary>
     /// To store picked up items in a collection
@@ -14,14 +14,13 @@ public class Inventory : MonoBehaviour
     public Inventory()
     {
         puzzleItemsList = new List<PuzzleItems>();
-
-        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
-        canvasManager = canvas.GetComponent<CanvasManager>();
+        GetCanvas();
     }
 
-    private void Start()
+    private void GetCanvas()
     {
-        
+        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
+        canvasManager = canvas.GetComponent<CanvasManager>();
     }
 
     /// <summary>
