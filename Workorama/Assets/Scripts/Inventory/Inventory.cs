@@ -1,48 +1,71 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Inventory : MonoBehaviour
+/// <summary>
+/// Class that contains member to create a inventory for the player
+/// </summary>
+public class Inventory 
 {
     /// <summary>
     /// To store picked up items in a collection
     /// </summary>
     private List<PuzzleItems> puzzleItemsList;
 
+    /// <summary>
+    /// To get access to the canvasManager component in gameobject
+    /// </summary>
     private CanvasManager canvasManager;
+
+    /// <summary>
+    /// Get to Canvas gameObject
+    /// </summary>
     private Canvas canvas;
 
+    /// <summary>
+    /// Create Delegate to store method inside
+    /// </summary>
+    private Action action;
+
+    /// <summary>
+    /// Initialize 
+    /// </summary>
     public Inventory()
     {
-
-        //puzzleItemsList = GetComponent<List<PuzzleItems>>();
         puzzleItemsList = new List<PuzzleItems>();
 
-        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
-        canvasManager = canvas.GetComponent<CanvasManager>();
+        action = GetCanvas;
+
+        action.Invoke();
     }
 
-    private void Start()
+    /// <summary>
+    /// Get acess to the canvas to get the CanvasManager script component
+    /// </summary>
+    private void GetCanvas()
     {
-        
+        canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
+        canvasManager = canvas.GetComponent<CanvasManager>();
     }
 
 
     /// <summary>
     /// Add Object to inventory
     /// </summary>
-    /// <param name="puzzleItem"></param>
+    /// <param name="puzzleItem"> Pickable puzzle item </param>
     public void AddToInventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Add(puzzleItem);
 
         // Make it appear in canvas
-        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
+        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, 
+            puzzleItem.GetIcon());
     }
 
     /// <summary>
     /// Remove object from inventory
     /// </summary>
-    /// <param name="puzzleItem"></param>
+    /// <param name="puzzleItem"> Pickable puzzle item </param>
     public void RemoveFromInventory(PuzzleItems puzzleItem) 
     {
         puzzleItemsList.Remove(puzzleItem);
@@ -57,8 +80,8 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Check if there is any item inside the inventory list
     /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
+    /// <param name="item"> Pickable item </param>
+    /// <returns> The picked item stored in inventory </returns>
     public bool CheckItemInInventory(PuzzleItems item) 
         => puzzleItemsList.Contains(item);
 }
