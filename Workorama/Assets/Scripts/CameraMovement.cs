@@ -4,69 +4,145 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private Transform north;
-    [SerializeField] private Transform south;
-    [SerializeField] private Transform east;
-    [SerializeField] private Transform west;
+    [SerializeField] private Transform cam2D;
     [SerializeField] private Transform player;
+    [SerializeField] private Transform helpCamNorth;
+    [SerializeField] private Transform helpCamSouth;
+    [SerializeField] private Transform helpCamEast;
+    [SerializeField] private Transform helpCamWest;
 
-    private int camMask;
+    private PlayerLook playerLook;
+    private PlayerMov playerMov;
+    private int camMask = -1;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerLook = GetComponent<PlayerLook>();
+        playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckSwitchCamera();
         UpdateCamera();
     }
 
-    private void CheckSwitchCamera()
+    public void SwitchWest()
     {
-        if(Input.GetKey(KeyCode.N))
+        transform.position = cam2D.position;
+        transform.rotation = cam2D.rotation;
+        camMask = -1;
+        camMask &=  ~(1 << LayerMask.NameToLayer("WestWall"));
+        this.GetComponent<Camera>().fieldOfView = 7f;
+    }
+
+    public void SwitchEast()
+    {
+        transform.position = cam2D.position;
+        transform.rotation = cam2D.rotation;
+        camMask = -1;
+        camMask &=  ~(1 << LayerMask.NameToLayer("EastWall"));
+        this.GetComponent<Camera>().fieldOfView = 7f;
+    }
+
+    public void SwitchNorth()
+    {
+        transform.position = cam2D.position;
+        transform.rotation = cam2D.rotation;
+        camMask = -1;
+        camMask &=  ~(1 << LayerMask.NameToLayer("NorthWall"));
+        this.GetComponent<Camera>().fieldOfView = 7f;
+    }
+
+    public void SwitchSouth()
+    {
+        transform.position = cam2D.position;
+        transform.rotation = cam2D.rotation;
+        camMask = -1;
+        camMask &=  ~(1 << LayerMask.NameToLayer("SouthWall"));
+        this.GetComponent<Camera>().fieldOfView = 7f;
+    }
+
+    public void ReturnToPlayer()
+    {
+        transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
+        transform.rotation = player.rotation;
+        camMask = -1;
+        this.GetComponent<Camera>().fieldOfView = 60f;
+    }
+
+    public void SwitchCam()
+    {
+        if (Check2DSwitch())
         {
-            transform.position = north.position;
-            transform.rotation = north.rotation;
-            camMask = -1;
-            camMask &=  ~(1 << LayerMask.NameToLayer("NorthWall"));
-            this.GetComponent<Camera>().fieldOfView = 4.8f;
+            SwitchTo2D();
+            //Stop Player movement, cam movement
         }
-        if(Input.GetKey(KeyCode.S))
+        else
         {
-            transform.position = south.position;
-            transform.rotation = south.rotation;
-            camMask = -1;
-            camMask &=  ~(1 << LayerMask.NameToLayer("SouthWall"));
-            this.GetComponent<Camera>().fieldOfView = 4.8f;
-        }
-        if(Input.GetKey(KeyCode.W))
-        {
-            transform.position = west.position;
-            transform.rotation = west.rotation;
-            camMask = -1;
-            camMask &=  ~(1 << LayerMask.NameToLayer("WestWall"));
-            this.GetComponent<Camera>().fieldOfView = 4.8f;
-        }
-        if(Input.GetKey(KeyCode.E))
-        {
-            transform.position = east.position;
-            transform.rotation = east.rotation;
-            camMask = -1;
-            camMask &=  ~(1 << LayerMask.NameToLayer("EastWall"));
-            this.GetComponent<Camera>().fieldOfView = 4.8f;
-        }
-        if(Input.GetKey(KeyCode.P))
-        {
-            transform.position = player.position;
-            transform.rotation = player.rotation;
-            camMask = -1;
-            this.GetComponent<Camera>().fieldOfView = 60f;
+            SwitchTo3D();
         }
     }
+
+
+    private bool Check2DSwitch()
+    {
+        if (transform.position.x < 250)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void SwitchTo2D()
+    {
+        float northDif = cam2D.position.x - helpCamNorth.position.x; 
+        float southDif = cam2D.position.x - helpCamSouth.position.x; 
+        float eastDif = cam2D.position.x - helpCamEast.position.x; 
+        float westDif = cam2D.position.x - helpCamWest.position.x; 
+
+        if (northDif == southDif)
+        {
+            if (westDif > eastDif)
+            {
+                SwitchEast();
+            }
+            else
+            {
+                SwitchWest();
+            }
+        }
+        else if (westDif == eastDif)
+        {
+            if (northDif > southDif)
+            {
+                SwitchSouth();
+            }
+            else
+            {
+                SwitchNorth();
+            }
+        }
+        else
+        {
+            Debug.Log("There is something wrong with the logic");
+        }
+
+        playerLook.enabled = false;
+        playerMov.enabled = false;
+
+    }
+
+    private void SwitchTo3D()
+    {
+        ReturnToPlayer();
+        playerLook.enabled = true;
+        playerMov.enabled = true;
+    }
+
+
+
     private void UpdateCamera()
     {
         this.GetComponent<Camera>().cullingMask = camMask;

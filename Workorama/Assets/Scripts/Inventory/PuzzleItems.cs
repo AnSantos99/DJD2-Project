@@ -37,12 +37,14 @@ public class PuzzleItems : MonoBehaviour
 
     private Animator animator;
     private Transform transform;
+    private CameraMovement camSwitch;
     private int curInteractionTextId;
 
     private void Start() 
     {
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
+        camSwitch = this.gameObject.GetComponent<CameraMovement>();
         curInteractionTextId = 0;
     }
 
@@ -111,6 +113,10 @@ public class PuzzleItems : MonoBehaviour
                 if (itemName == "Building")
                 {
                     RorateBuilding();
+                }
+                if (itemName == "Camera")
+                {
+                    camSwitch.SwitchCam();
                 }
             }
 
