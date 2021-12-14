@@ -114,7 +114,10 @@ public class PuzzleItems : MonoBehaviour
             {
                 animator.SetTrigger("Interact");
 
-                
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
+                {
+                    StartCoroutine(WaitForAnimationToEnd());
+                }
             }
 
             if(puzzleItemType == PuzzleItemType.INDIRECT) 
@@ -169,5 +172,18 @@ public class PuzzleItems : MonoBehaviour
     private void RorateBuilding()
     {
         transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+    }
+
+    /// <summary>
+    /// Wait a few second before disabling a object
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitForAnimationToEnd() 
+    {
+        yield return new WaitForSeconds(3);
+
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.SetActive(false);
+        
     }
 }
