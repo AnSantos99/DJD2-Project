@@ -5,13 +5,13 @@ using TMPro;
 
 public class CodeLocker : MonoBehaviour
 {
-    private int codeLength;
-    private int placeInCode;
+    private int codeLength;     //The required code
+    private int placeInCode;    //The player's input
 
     [SerializeField] private string code;
     [SerializeField] private string attemptedCode;
 
-    private Animator animator;
+    //private Animator animator;
 
     [SerializeField] private GameObject WrongPanel;
     [SerializeField] private GameObject RightPanel;
@@ -22,6 +22,8 @@ public class CodeLocker : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         codeLength = code.Length;
+
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >1 )
     }
 
     private void CheckCode()
