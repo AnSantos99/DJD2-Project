@@ -20,10 +20,9 @@ public class CodeLocker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInParent<Animator>();
+        //animator = GetComponentInParent<Animator>();
         codeLength = code.Length;
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >1 )
     }
 
     private void CheckCode()
