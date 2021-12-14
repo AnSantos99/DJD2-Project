@@ -40,6 +40,8 @@ public class PuzzleItems : MonoBehaviour
     private CameraMovement camSwitch;
     private int curInteractionTextId;
 
+    public string ItemName { get => itemName; }
+
     private void Start() 
     {
         animator = GetComponent<Animator>();
@@ -108,7 +110,12 @@ public class PuzzleItems : MonoBehaviour
     {
         if(isActive)
         {
-            if (animator != null) animator.SetTrigger("Interact");
+            if (animator != null)
+            {
+                animator.SetTrigger("Interact");
+
+                
+            }
 
             if(puzzleItemType == PuzzleItemType.INDIRECT) 
             {
