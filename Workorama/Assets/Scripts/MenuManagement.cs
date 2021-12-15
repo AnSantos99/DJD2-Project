@@ -7,7 +7,7 @@ public class MenuManagement : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Prototype1");
+        SceneManager.LoadScene("Prototype2");
     }
 
     public void QuitGame()
@@ -17,6 +17,6 @@ public class MenuManagement : MonoBehaviour
 
     public void ShowOptions()
     {
-        
+        // To be implemented
     }
 }
