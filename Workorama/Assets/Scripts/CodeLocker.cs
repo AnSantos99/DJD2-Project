@@ -11,6 +11,7 @@ public class CodeLocker : MonoBehaviour
     [SerializeField] private string code;
     [SerializeField] private string attemptedCode;
 
+    [SerializeField]private Animator doorAnim;
     private Animator animator;
 
 
@@ -29,6 +30,7 @@ public class CodeLocker : MonoBehaviour
         {
             animator.SetTrigger("Right");
 
+            doorAnim.SetTrigger("Interact");
 
             //What does it do when the input is right
         }
