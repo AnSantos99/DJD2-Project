@@ -9,6 +9,7 @@ public class Inventory
     private List<PuzzleItems> puzzleItemsList;
 
     private CanvasManager canvasManager;
+
     private Canvas canvas;
 
     public Inventory()
@@ -33,6 +34,11 @@ public class Inventory
 
         // Make it appear in canvas
         canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
+    }
+
+    public void SelectItemFromInventory(PuzzleItems puzzleItem) 
+    {
+        puzzleItemsList.Find((item) => puzzleItem);
     }
 
     /// <summary>
