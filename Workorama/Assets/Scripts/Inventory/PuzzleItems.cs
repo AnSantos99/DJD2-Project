@@ -19,27 +19,41 @@ public class PuzzleItems : MonoBehaviour
     [SerializeField]
     private Sprite itemSprite;
 
+    // Get the requirement text for a puzzle object
     [SerializeField]
     private string requirementText;
 
+    // Setup the requirements that are needed to meet to be able to continue
     [SerializeField]
     private PuzzleItems[] requirements;
 
+    // Activate specific puzzle items
     [SerializeField]
     private PuzzleItems[] activationChain;
 
+    // Set the interaction text of the puzzle item
     [SerializeField]
     private string[] interactionTexts;
 
+    // Activates another puzzle item after the previous one has been done
     [SerializeField]
     private PuzzleItems[] interactionChain;
 
-
+    // Get the animators of the components
     private Animator animator;
+
+    // Get the transform of the components
     private Transform transform;
+
+    // Get the cameraMovemnt script to acess the camera
     private CameraMovement camSwitch;
+
+    // set up the current text ID
     private int curInteractionTextId;
 
+    /// <summary>
+    /// Get the item name
+    /// </summary>
     public string ItemName { get => itemName; }
 
     private void Start() 
@@ -148,6 +162,9 @@ public class PuzzleItems : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if there are elements in the chain and Activate them
+    /// </summary>
     private void ProcessActivationChain()
     {
         if(activationChain != null)
@@ -157,6 +174,9 @@ public class PuzzleItems : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if there are elements in the chain and make them interactable
+    /// </summary>
     private void ProcessInteractionChain()
     {
         if(interactionChain != null)
@@ -166,12 +186,18 @@ public class PuzzleItems : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Unlock cursor
+    /// </summary>
     private void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
+    /// <summary>
+    /// Rotate the building
+    /// </summary>
     private void RorateBuilding()
     {
         transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
@@ -191,9 +217,5 @@ public class PuzzleItems : MonoBehaviour
         UnlockCursor();
 
         SceneManager.LoadScene("Endgame");
-
-        
-
-
     }
 }
