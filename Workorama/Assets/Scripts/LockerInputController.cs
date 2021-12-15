@@ -6,7 +6,7 @@ public class LockerInputController : MonoBehaviour
     private CodeLocker codeLock;
     private Animation anim;
 
-    private int reachRange = 100;
+    private const int reachRange = 100;
 
 
     private void Update()

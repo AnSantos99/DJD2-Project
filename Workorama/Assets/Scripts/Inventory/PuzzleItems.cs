@@ -166,6 +166,11 @@ public class PuzzleItems : MonoBehaviour
         }
     }
 
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
     private void RorateBuilding()
     {
@@ -183,7 +188,12 @@ public class PuzzleItems : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.SetActive(false);
 
+        UnlockCursor();
+
         SceneManager.LoadScene("Endgame");
+
         
+
+
     }
 }

@@ -66,7 +66,7 @@ public class CameraMovement : MonoBehaviour
 
     public void ReturnToPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
+        transform.position = new Vector3(player.position.x, player.position.y + 0.9f, player.position.z + 0.2f);
         transform.rotation = player.rotation;
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;

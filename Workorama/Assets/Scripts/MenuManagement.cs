@@ -19,7 +19,6 @@ public class MenuManagement : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Debug.Log("Closing game");
         Application.Quit();
     }
 
