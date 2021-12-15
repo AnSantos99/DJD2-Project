@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -40,7 +38,8 @@ public class Interaction : MonoBehaviour
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
         out RaycastHit hitInfo, INTERACTION_DISTANCE))
         {
-            PuzzleItems interactiveItems = hitInfo.collider.GetComponent<PuzzleItems>();
+            PuzzleItems interactiveItems = 
+                hitInfo.collider.GetComponent<PuzzleItems>();
 
             if (interactiveItems == null || !interactiveItems.IsActive())
                 ClearCurrentInteractive();
@@ -63,7 +62,8 @@ public class Interaction : MonoBehaviour
         currentInteractiveItems = item;
 
         if (PlayerHasInteractionRequirements())
-            canvasManager.ShowInteractionPanel(item.GetCurrentRequirementText());
+            canvasManager.ShowInteractionPanel(
+                item.GetCurrentRequirementText());
         else
             canvasManager.ShowInteractionPanel(item.GetRequirementText());
 
@@ -73,7 +73,8 @@ public class Interaction : MonoBehaviour
     {
         hasRequirements = false;
 
-        PuzzleItems[] requirements = currentInteractiveItems.PuzzleRequirement();
+        PuzzleItems[] requirements = 
+            currentInteractiveItems.PuzzleRequirement();
 
         if (requirements != null)
             for (int i = 0; i < requirements.Length; ++i)
@@ -86,10 +87,12 @@ public class Interaction : MonoBehaviour
 
     private void CheckForPlayerInteraction()
     {
-        if (Input.GetMouseButtonDown(0) && currentInteractiveItems != null && hasRequirements)
+        if (Input.GetMouseButtonDown(0) && 
+            currentInteractiveItems != null && hasRequirements)
         {
             if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE)
                 PickCurrentInteractive();
+
             else
                 InteractWithCurrentInteractive();
         }

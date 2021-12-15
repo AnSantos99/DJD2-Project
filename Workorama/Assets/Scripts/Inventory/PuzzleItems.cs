@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleItems : MonoBehaviour
 {
@@ -99,8 +99,6 @@ public class PuzzleItems : MonoBehaviour
     public void Activate()
     {
         isActive = true;
-
-        //if (animator != null) animator.SetTrigger("Activate");
     }
 
     /// <summary>
@@ -180,10 +178,12 @@ public class PuzzleItems : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitForAnimationToEnd() 
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3.5f);
 
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.SetActive(false);
+
+        SceneManager.LoadScene("Endgame");
         
     }
 }

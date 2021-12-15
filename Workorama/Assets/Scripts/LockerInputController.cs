@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LockerInputController : MonoBehaviour
 {
 
-    CodeLocker codeLock;
-    Animation anim;
+    private CodeLocker codeLock;
+    private Animation anim;
 
-    int reachRange = 100;
+    private int reachRange = 100;
 
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -19,7 +17,7 @@ public class LockerInputController : MonoBehaviour
         }
     }
 
-    void CheckHitObj()
+    private void CheckHitObj()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

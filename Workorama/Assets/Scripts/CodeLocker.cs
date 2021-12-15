@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class CodeLocker : MonoBehaviour
 {
@@ -21,7 +18,6 @@ public class CodeLocker : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         codeLength = code.Length;
-
     }
 
     private void CheckCode()

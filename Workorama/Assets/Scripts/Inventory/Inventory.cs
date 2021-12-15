@@ -33,7 +33,8 @@ public class Inventory
         puzzleItemsList.Add(puzzleItem);
 
         // Make it appear in canvas
-        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, puzzleItem.GetIcon());
+        canvasManager.SetInventoryIcon(puzzleItemsList.Count -1, 
+            puzzleItem.GetIcon());
     }
 
     public void SelectItemFromInventory(PuzzleItems puzzleItem) 
