@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1943024052}
-  m_IndirectSpecularColor: {r: 0.18333954, g: 0.22713913, b: 0.29561734, a: 1}
+  m_IndirectSpecularColor: {r: 0.1833395, g: 0.22713913, b: 0.2956173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,8 +410,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 180718467}
-  - component: {fileID: 180718469}
   - component: {fileID: 180718468}
+  - component: {fileID: 180718469}
   m_Layer: 0
   m_Name: MoveBuildingBar
   m_TagString: Untagged
@@ -428,7 +428,7 @@ Transform:
   m_GameObject: {fileID: 180718466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9121339, y: 1.9121339, z: 1.9121339}
   m_Children:
   - {fileID: 619859641}
   m_Father: {fileID: 1150799446}
@@ -457,8 +457,8 @@ MonoBehaviour:
   - Rotate Building
   interactionChain:
   - {fileID: 1150799448}
---- !u!136 &180718469
-CapsuleCollider:
+--- !u!65 &180718469
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -467,10 +467,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 50
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: -0.5, y: -24.49, z: -0.5}
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940697}
 --- !u!1 &224389256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,20 +3988,19 @@ Transform:
   m_Father: {fileID: 619859641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1085303401
-CapsuleCollider:
+--- !u!65 &1085303401
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085303399}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 1.3, z: 1.3}
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940697}
 --- !u!23 &1085303402
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4052,7 +4050,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085303399}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1100442076
 GameObject:
   m_ObjectHideFlags: 0
