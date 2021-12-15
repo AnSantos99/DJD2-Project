@@ -6,6 +6,7 @@ public class LockerInputController : MonoBehaviour
 {
 
     CodeLocker codeLock;
+    Animation anim;
 
     int reachRange = 100;
 
@@ -26,11 +27,13 @@ public class LockerInputController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, reachRange))
         {
             codeLock = hit.transform.gameObject.GetComponentInParent<CodeLocker>();//Witch codelock is beeing pressed
+            anim = hit.transform.gameObject.GetComponentInParent<Animation>();
 
             if (codeLock != null)
             {
                 string value = hit.transform.name;
                 codeLock.SetValue(value);
+                anim.Play();
             }
         }
     }

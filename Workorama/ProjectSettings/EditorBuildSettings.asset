@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 8ab8fa8ca0a744d55810e1bf287c22e6
   - enabled: 0
-    path: Assets/Scenes/PedroScene.unity
-    guid: a5c76f4d143934fd8b7182993a69e6d4
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Prototype1.unity
-    guid: 7d327d2025364cc47abc9c6534268eef
+    path: Assets/Scenes/Prototype2.unity
+    guid: fc72e8ce1bb1e474d86629208e9b02c1
   m_configObjects: {}
