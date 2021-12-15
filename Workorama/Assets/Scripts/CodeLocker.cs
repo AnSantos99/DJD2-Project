@@ -11,16 +11,14 @@ public class CodeLocker : MonoBehaviour
     [SerializeField] private string code;
     [SerializeField] private string attemptedCode;
 
-    //private Animator animator;
+    private Animator animator;
 
-    [SerializeField] private GameObject WrongPanel;
-    [SerializeField] private GameObject RightPanel;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponentInParent<Animator>();
+        animator = GetComponentInParent<Animator>();
         codeLength = code.Length;
 
     }
@@ -29,7 +27,7 @@ public class CodeLocker : MonoBehaviour
     {
         if (attemptedCode == code)
         {
-            StartCoroutine(ShowRightInputMessage());
+            animator.SetTrigger("Right");
 
 
             //What does it do when the input is right
@@ -37,28 +35,8 @@ public class CodeLocker : MonoBehaviour
 
         else
         {
-            StartCoroutine(ShowWrongInputMessage());
+            animator.SetTrigger("Wrong");
         }
-    }
-
-    IEnumerator ShowWrongInputMessage()
-    {
-        WrongPanel.SetActive(true);
-
-        yield return new WaitForSeconds(2);
-
-        WrongPanel.SetActive(false); ;
-    }
-
-    IEnumerator ShowRightInputMessage()
-    {
-        RightPanel.SetActive(true);
-
-        yield return new WaitForSeconds(2);
-
-        RightPanel.SetActive(false);
-
-        Destroy(this);
     }
 
     public void SetValue(string value)
