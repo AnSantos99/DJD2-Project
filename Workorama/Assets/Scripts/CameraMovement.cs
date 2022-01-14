@@ -11,6 +11,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform helpCamEast;
     [SerializeField] private Transform helpCamWest;
 
+    [SerializeField] private float playerHeight;
+
     private PlayerLook playerLook;
     private PlayerMov playerMov;
     private int camMask = -1;
@@ -18,6 +20,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHeight = 1.1f;
         playerLook = GetComponent<PlayerLook>();
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
@@ -66,7 +69,9 @@ public class CameraMovement : MonoBehaviour
 
     public void ReturnToPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + 0.9f, player.position.z + 0.2f);
+        transform.position = new Vector3(player.position.x, player.position.y +
+            playerHeight, player.position.z + 0.2f);
+
         transform.rotation = player.rotation;
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;
