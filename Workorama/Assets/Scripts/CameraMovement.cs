@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHeight = 1.1f;
+        playerHeight = 1.5f;
         playerLook = GetComponent<PlayerLook>();
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
