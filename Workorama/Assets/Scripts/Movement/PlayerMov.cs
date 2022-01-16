@@ -9,6 +9,8 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]private float runBuildUpSpeed;
     [SerializeField]private KeyCode runKey;
 
+    [SerializeField]private Animator anim;
+
     private float movementSpeed;
 
     private CharacterController charController;
@@ -43,12 +45,16 @@ public class PlayerMov : MonoBehaviour
         {
             movementSpeed = Mathf.Lerp(movementSpeed, runSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
+
+            //anim.SetFloat("Speed", Mathf.Abs(runSpeed));
         }
 
         else
         {
             movementSpeed = Mathf.Clamp(movementSpeed, walkSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
+
+            anim.SetFloat("Speed", Mathf.Abs(movementSpeed));
         }
     }
 }
