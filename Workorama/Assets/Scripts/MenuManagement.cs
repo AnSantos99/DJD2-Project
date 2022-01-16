@@ -25,7 +25,7 @@ public class MenuManagement : MonoBehaviour
     /// <summary>
     /// To hide the pause menu panel
     /// </summary>
-    private void HidePauseMenu() => pauseMenu.SetActive(false);
+    public void HidePauseMenu() => pauseMenu.SetActive(false);
 
     /// <summary>
     /// Method for start button to start game
@@ -63,7 +63,7 @@ public class MenuManagement : MonoBehaviour
     /// <summary>
     /// Method that activates pause menu on key press
     /// </summary>
-    private void ActivatePauseMenu()
+    public void ActivatePauseMenu()
     {
         if (Input.GetKeyDown(KeyCode.P)) 
         {
