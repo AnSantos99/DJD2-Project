@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -10,19 +9,23 @@ public class MenuManagement : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseMenu;
+
     private bool isPaused;
 
-    void Start()
+    private void Start()
     {
-        pauseMenu.SetActive(false);
+        HidePauseMenu();
     }
 
-    
-    void Update()
+    private void Update()
     {
-        Debug.Log("Am here");
-        //ActivatePauseMenu();
+        ActivatePauseMenu();
     }
+
+    /// <summary>
+    /// To hide the pause menu panel
+    /// </summary>
+    private void HidePauseMenu() => pauseMenu.SetActive(false);
 
     /// <summary>
     /// Method for start button to start game
@@ -57,24 +60,32 @@ public class MenuManagement : MonoBehaviour
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void ActivatePauseMenu()
+    /// <summary>
+    /// Method that activates pause menu on key press
+    /// </summary>
+    private void ActivatePauseMenu()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P)) 
         {
-            
-            PauseGame();
-        } 
+            if(isPaused) ResumeGame();
 
-        else ResumeGame();      
+            else PauseGame();
+        } 
     }
 
-    public void PauseGame()
+    /// <summary>
+    /// Pause game and "freeze" time
+    /// </summary>
+    private void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
 
+    /// <summary>
+    /// Resume game and "unfreeze" time
+    /// </summary>
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
