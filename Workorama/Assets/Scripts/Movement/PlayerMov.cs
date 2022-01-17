@@ -9,7 +9,7 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]private float runBuildUpSpeed;
     [SerializeField]private KeyCode runKey;
 
-    [SerializeField]private Animator anim;
+    private Animator anim;
 
     private float movementSpeed;
 
@@ -18,6 +18,7 @@ public class PlayerMov : MonoBehaviour
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -46,7 +47,7 @@ public class PlayerMov : MonoBehaviour
             movementSpeed = Mathf.Lerp(movementSpeed, runSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            //anim.SetFloat("Speed", Mathf.Abs(runSpeed));
+            anim.SetFloat("Speed", runSpeed);
         }
 
         else
@@ -54,7 +55,7 @@ public class PlayerMov : MonoBehaviour
             movementSpeed = Mathf.Clamp(movementSpeed, walkSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            anim.SetFloat("Speed", Mathf.Abs(movementSpeed));
+            //anim.SetFloat("Speed", movementSpeed);
         }
     }
 }
