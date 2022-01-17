@@ -47,15 +47,21 @@ public class PlayerMov : MonoBehaviour
             movementSpeed = Mathf.Lerp(movementSpeed, runSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            anim.SetFloat("Speed", runSpeed);
+            anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
         }
 
-        else
+        else if(Input.GetAxis(horizontalInputName ) < 0 || 
+            Input.GetAxis(verticalInputName) < 0 || 
+            Input.GetAxis(horizontalInputName) > 0 || 
+            Input.GetAxis(verticalInputName) > 0)
         {
             movementSpeed = Mathf.Clamp(movementSpeed, walkSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            //anim.SetFloat("Speed", movementSpeed);
+            anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
         }
+
+        else
+            anim.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
     }
 }
