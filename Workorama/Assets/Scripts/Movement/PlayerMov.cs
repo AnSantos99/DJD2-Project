@@ -9,11 +9,14 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]private float runBuildUpSpeed;
     [SerializeField]private KeyCode runKey;
 
-    private Animator anim;
-
     private float movementSpeed;
 
     private CharacterController charController;
+
+    /// <summary>
+    /// Animation controller
+    /// </summary>
+    private Animator anim;
 
     private void Awake()
     {
@@ -26,6 +29,9 @@ public class PlayerMov : MonoBehaviour
         PlayerMovement();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void PlayerMovement()
     {
         float horizInput = Input.GetAxis(horizontalInputName);
@@ -40,6 +46,9 @@ public class PlayerMov : MonoBehaviour
         SetMovementSpeed();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void SetMovementSpeed()
     {
         if (Input.GetKey(runKey))
@@ -61,6 +70,7 @@ public class PlayerMov : MonoBehaviour
             anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
         }
 
+        // Idle Animation on 0 speed movement
         else
             anim.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
     }
