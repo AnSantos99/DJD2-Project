@@ -235,18 +235,23 @@ public class BreakableWindow : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (useCollision == true)
+        if (col.gameObject.tag == "Hammer")
         {
-            if (health > 0)
+            if (useCollision == true)
             {
-                health -= col.impulse.magnitude;
-                if (health < 0)
+                if (health > 0)
                 {
-                    health = 0;
-                    breakWindow();
+                    health -= col.impulse.magnitude;
+                    if (health < 0)
+                    {
+                        health = 0;
+                        breakWindow();
+                    }
                 }
+                else breakWindow();
             }
-            else breakWindow();
-        }        
+        }
+
+                
     }
 }
