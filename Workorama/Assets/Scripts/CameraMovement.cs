@@ -10,9 +10,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform helpCamSouth;
     [SerializeField] private Transform helpCamEast;
     [SerializeField] private Transform helpCamWest;
+    [SerializeField] private float     transitionSpeed;
+    [SerializeField] private float     rotationSpeed;
 
     private PlayerLook playerLook;
     private PlayerMov playerMov;
+    private bool transitToPlayer = false;
+    private bool transitTo2D = false;
     private int camMask = -1;
 
     // Start is called before the first frame update
@@ -28,46 +32,41 @@ public class CameraMovement : MonoBehaviour
         UpdateCamera();
     }
 
-    public void SwitchWest()
+    void LateUpdate()
     {
-        transform.position = cam2D.position;
-        transform.rotation = cam2D.rotation;
-        camMask = -1;
-        camMask &=  ~(1 << LayerMask.NameToLayer("WestWall"));
-        this.GetComponent<Camera>().fieldOfView = 7f;
-    }
+        if (transitToPlayer)
+        {
+            transform.position = Vector3.Slerp(transform.position, player.position , Time.deltaTime * transitionSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, player.rotation , Time.deltaTime * rotationSpeed);
+            Debug.Log(Vector3.Distance(transform.position, player.position));
+            if (Vector3.Distance(transform.position, player.position) < 0.005f)
+            {
+                transitToPlayer = false;
+                playerLook.enabled = true;
+                playerMov.enabled = true;
+            }
+        }
 
-    public void SwitchEast()
-    {
-        transform.position = cam2D.position;
-        transform.rotation = cam2D.rotation;
-        camMask = -1;
-        camMask &=  ~(1 << LayerMask.NameToLayer("EastWall"));
-        this.GetComponent<Camera>().fieldOfView = 7f;
-    }
+        if (transitTo2D)
+        {
+            transform.position = Vector3.Slerp(transform.position, cam2D.position , Time.deltaTime * transitionSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, cam2D.rotation , Time.deltaTime * rotationSpeed);
+            Debug.Log(Vector3.Distance(transform.position, cam2D.position));
+            if (Vector3.Distance(transform.position, cam2D.position) < 0.1f)
+            {
+                transitTo2D = false;
+            }
+        }
+        
 
-    public void SwitchNorth()
-    {
-        transform.position = cam2D.position;
-        transform.rotation = cam2D.rotation;
-        camMask = -1;
-        camMask &=  ~(1 << LayerMask.NameToLayer("NorthWall"));
-        this.GetComponent<Camera>().fieldOfView = 7f;
-    }
-
-    public void SwitchSouth()
-    {
-        transform.position = cam2D.position;
-        transform.rotation = cam2D.rotation;
-        camMask = -1;
-        camMask &=  ~(1 << LayerMask.NameToLayer("SouthWall"));
-        this.GetComponent<Camera>().fieldOfView = 7f;
+        
     }
 
     public void ReturnToPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
-        transform.rotation = player.rotation;
+        //transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
+        //transform.rotation = player.rotation;
+        transitToPlayer = true;
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;
     }
@@ -102,26 +101,31 @@ public class CameraMovement : MonoBehaviour
         float eastDif = cam2D.position.x - helpCamEast.position.x; 
         float westDif = cam2D.position.x - helpCamWest.position.x; 
 
+        //transform.position = cam2D.position;
+        //transform.rotation = cam2D.rotation;
+        transitTo2D = true;
+        camMask = -1;
+
         if (northDif == southDif)
         {
             if (westDif > eastDif)
             {
-                SwitchEast();
+                camMask &=  ~(1 << LayerMask.NameToLayer("EastWall"));
             }
             else
             {
-                SwitchWest();
+                camMask &=  ~(1 << LayerMask.NameToLayer("WestWall"));
             }
         }
         else if (westDif == eastDif)
         {
             if (northDif > southDif)
             {
-                SwitchSouth();
+                camMask &=  ~(1 << LayerMask.NameToLayer("SouthWall"));
             }
             else
             {
-                SwitchNorth();
+                camMask &=  ~(1 << LayerMask.NameToLayer("NorthWall"));
             }
         }
         else
@@ -129,6 +133,7 @@ public class CameraMovement : MonoBehaviour
             Debug.Log("There is something wrong with the logic");
         }
 
+        this.GetComponent<Camera>().fieldOfView = 7f;
         playerLook.enabled = false;
         playerMov.enabled = false;
 
@@ -137,8 +142,6 @@ public class CameraMovement : MonoBehaviour
     private void SwitchTo3D()
     {
         ReturnToPlayer();
-        playerLook.enabled = true;
-        playerMov.enabled = true;
     }
 
 
