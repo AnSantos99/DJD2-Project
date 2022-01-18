@@ -13,6 +13,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float     transitionSpeed;
     [SerializeField] private float     rotationSpeed;
 
+    [SerializeField] private float playerHeight;
+
     private PlayerLook playerLook;
     private PlayerMov playerMov;
     private bool transitToPlayer = false;
@@ -22,6 +24,7 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHeight = 1.5f;
         playerLook = GetComponent<PlayerLook>();
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
@@ -67,6 +70,7 @@ public class CameraMovement : MonoBehaviour
         //transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
         //transform.rotation = player.rotation;
         transitToPlayer = true;
+
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;
     }

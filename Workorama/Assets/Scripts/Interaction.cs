@@ -13,11 +13,12 @@ public class Interaction : MonoBehaviour
 
     private Inventory inventory;
 
+    // Check if puzzleItem has the requirements
     private bool hasRequirements;
 
         
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
@@ -27,12 +28,15 @@ public class Interaction : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         LockForInteractive();
         CheckForPlayerInteraction();
     }
 
+    /// <summary>
+    /// Check with raycast if there are interactive objects near player
+    /// </summary>
     private void LockForInteractive()
     {
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
@@ -69,13 +73,18 @@ public class Interaction : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Check if player has the object required to be able to use unlock the
+    /// next one.
+    /// </summary>
+    /// <returns> true if condition above is meet </returns>
     private bool PlayerHasInteractionRequirements()
     {
         hasRequirements = false;
 
         PuzzleItems[] requirements = 
             currentInteractiveItems.PuzzleRequirement();
-
+        
         if (requirements != null)
             for (int i = 0; i < requirements.Length; ++i)
                 if (!inventory.CheckItemInInventory(requirements[i]))

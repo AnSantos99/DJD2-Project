@@ -2,24 +2,59 @@ using UnityEngine;
 
 public class CodeLocker : MonoBehaviour
 {
-    private int codeLength;     //The required code
-    private int placeInCode;    //The player's input
+    //The required code lenght
+    private int codeLength;
 
+    //The player's input lenght
+    private int placeInCode;    
+
+    /// <summary>
+    /// Desired code
+    /// </summary>
     [SerializeField] private string code;
+
+    /// <summary>
+    /// Receive the players input
+    /// </summary>
     [SerializeField] private string attemptedCode;
 
+    /// <summary>
+    /// Variable of type animator to get access to the components of the game
+    /// object
+    /// </summary>
     [SerializeField]private Animator doorAnim;
     private Animator animator;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator = GetComponentInParent<Animator>();
         codeLength = code.Length;
     }
 
+    private void Update()
+    {
+        Cheat();
+    }
+
+    /// <summary>
+    /// Method to pass the padlock puzzle
+    /// </summary>
+    private void Cheat() 
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("Right");
+            doorAnim.SetTrigger("Interact");
+        }
+    }
+
+    /// <summary>
+    /// Method that check if the inserted code is correct and resets and starts
+    /// the animations
+    /// </summary>
     private void CheckCode()
     {
         if (attemptedCode == code)
@@ -27,8 +62,6 @@ public class CodeLocker : MonoBehaviour
             animator.SetTrigger("Right");
 
             doorAnim.SetTrigger("Interact");
-
-            //What does it do when the input is right
         }
 
         else
@@ -37,6 +70,10 @@ public class CodeLocker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method that gets the value and compares with the desired code
+    /// </summary>
+    /// <param name="value"> Get value </param>
     public void SetValue(string value)
     {
         placeInCode++;
