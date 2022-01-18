@@ -42,8 +42,10 @@ public class CameraMovement : MonoBehaviour
             transform.position = Vector3.Slerp(transform.position, player.position , Time.deltaTime * transitionSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, player.rotation , Time.deltaTime * rotationSpeed);
             Debug.Log(Vector3.Distance(transform.position, player.position));
-            if (Vector3.Distance(transform.position, player.position) < 0.005f)
+            if (Vector3.Distance(transform.position, player.position) < 2f)
             {
+                transform.position = new Vector3(player.position.x, player.position.y + playerHeight, player.position.z);
+                transform.rotation = player.rotation;
                 transitToPlayer = false;
                 playerLook.enabled = true;
                 playerMov.enabled = true;
@@ -55,8 +57,10 @@ public class CameraMovement : MonoBehaviour
             transform.position = Vector3.Slerp(transform.position, cam2D.position , Time.deltaTime * transitionSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, cam2D.rotation , Time.deltaTime * rotationSpeed);
             Debug.Log(Vector3.Distance(transform.position, cam2D.position));
-            if (Vector3.Distance(transform.position, cam2D.position) < 0.1f)
+            if (Vector3.Distance(transform.position, cam2D.position) < 2f)
             {
+                transform.position = cam2D.position;
+                transform.rotation = cam2D.rotation;
                 transitTo2D = false;
             }
         }

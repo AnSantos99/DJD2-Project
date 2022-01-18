@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1943024052}
-  m_IndirectSpecularColor: {r: 0.18333954, g: 0.22713913, b: 0.29561734, a: 1}
+  m_IndirectSpecularColor: {r: 0.18333884, g: 0.22713792, b: 0.2956161, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3015,6 +3015,7 @@ MonoBehaviour:
   activationChain: []
   interactionTexts:
   - Rotate Building
+  timeRotating: 3
   interactionChain:
   - {fileID: 1150799448}
 --- !u!65 &180718469
@@ -8621,6 +8622,7 @@ MonoBehaviour:
   requirements: []
   activationChain: []
   interactionTexts: []
+  timeRotating: 3
   interactionChain: []
 --- !u!82 &477254790
 AudioSource:
@@ -10942,6 +10944,7 @@ MonoBehaviour:
   activationChain: []
   interactionTexts:
   - Switch to 3D
+  timeRotating: 3
   interactionChain:
   - {fileID: 1230286122}
 --- !u!1001 &570327057
@@ -21261,6 +21264,7 @@ MonoBehaviour:
   requirements: []
   activationChain: []
   interactionTexts: []
+  timeRotating: 3
   interactionChain: []
 --- !u!1001 &1151289478
 PrefabInstance:
@@ -21925,6 +21929,7 @@ MonoBehaviour:
   activationChain: []
   interactionTexts:
   - Go Down
+  timeRotating: 3
   interactionChain: []
 --- !u!65 &1223150318
 BoxCollider:
@@ -22009,6 +22014,7 @@ MonoBehaviour:
   requirements: []
   activationChain: []
   interactionTexts: []
+  timeRotating: 3
   interactionChain: []
 --- !u!114 &1230286123
 MonoBehaviour:
@@ -22028,6 +22034,8 @@ MonoBehaviour:
   helpCamSouth: {fileID: 1610211221}
   helpCamEast: {fileID: 1507626770}
   helpCamWest: {fileID: 1244481181}
+  transitionSpeed: 0.5
+  rotationSpeed: 1
   playerHeight: 1.5
 --- !u!1001 &1232253836
 PrefabInstance:
@@ -26056,6 +26064,7 @@ MonoBehaviour:
   - {fileID: 1223150317}
   interactionTexts:
   - Break door with hammer.
+  timeRotating: 3
   interactionChain: []
 --- !u!1001 &1440430730
 PrefabInstance:
