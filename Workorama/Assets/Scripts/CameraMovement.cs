@@ -203,6 +203,7 @@ public class CameraMovement : MonoBehaviour
 
         playerLook.enabled = true;
         playerMov.enabled = true;
+        transform.position = new Vector3(player.position.x, player.position.y + playerHeight, player.position.z);
         currentTime = 0.0f;
     }
 }
