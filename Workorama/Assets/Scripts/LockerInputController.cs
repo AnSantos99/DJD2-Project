@@ -6,6 +6,8 @@ public class LockerInputController : MonoBehaviour
     /// Get acees to instances of class codelocker
     /// </summary>
     private CodeLocker codeLock;
+    [SerializeField]
+    private Transform cameraTransform;
 
     /// <summary>
     /// Variable of type animator to get access to the components of the game
@@ -16,8 +18,11 @@ public class LockerInputController : MonoBehaviour
     // Defined unchangeable range for raycast
     private const int reachRange = 100;
 
+    private void Start()
+    {
+    }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -30,10 +35,9 @@ public class LockerInputController : MonoBehaviour
     /// </summary>
     private void CheckHitObj()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, reachRange))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
+        out RaycastHit hit, reachRange))
         {
             //Witch codelock is beeing pressed
             codeLock = hit.transform.gameObject.GetComponentInParent<CodeLocker>();
