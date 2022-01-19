@@ -8,53 +8,51 @@ public class TextWriterEffect : MonoBehaviour
     [SerializeField]
     private float delayBetweenChars;
 
-    private Text fullText;
+    private CanvasManager fullText;
 
     private string charWriter;
 
 
-    // Start is called before the first frame update
-    private void Start()
-    {
+    //// Start is called before the first frame update
+    //private void Start()
+    //{
         
-        fullText = GetComponent<Text>();
+    //    fullText = new CanvasManager();
 
-        charWriter = fullText.text;
+    //    charWriter = fullText.text;
 
-        fullText.text = "";
+    //    fullText.text = "";
 
-        TextVerification();
+    //    TextVerification();
 
         
-    }
+    //}
 
-    private void TextVerification() 
-    {
-        if (this.gameObject.activeInHierarchy == true)
-        {
-            if (fullText != null)
-            {
-                charWriter = fullText.text;
-                fullText.text = "";
-                StartCoroutine(DisplayText());
-            }
-        }
+    //private void TextVerification() 
+    //{
+    //    if (this.gameObject.activeInHierarchy == true)
+    //    {
+    //        if (fullText != null)
+    //        {
+    //            charWriter = fullText.text;
+    //            fullText.text = "";
+    //            StartCoroutine(DisplayText());
+    //        }
+    //    }
         
-    }
+    //}
 
 
-    IEnumerator DisplayText() 
-    {
-        foreach (char c in charWriter)
-        {
-            if (fullText.text.Length > 0)
-                fullText.text = fullText.text.Substring(0, fullText.text.Length);
+    //IEnumerator DisplayText() 
+    //{
+    //    foreach (char c in charWriter)
+    //    {
+    //        if (fullText.text.Length > 0)
+    //            fullText.text = fullText.text.Substring(0, fullText.text.Length);
 
-            fullText.text += c;
+    //        fullText.text += c;
 
-            yield return new WaitForSeconds(delayBetweenChars);
-
-            Debug.Log(c);
-        }
-    }
+    //        yield return new WaitForSeconds(delayBetweenChars);
+    //    }
+    //}
 }
