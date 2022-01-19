@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 47165564}
   - component: {fileID: 47165563}
   - component: {fileID: 47165562}
-  - component: {fileID: 47165565}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -207,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 47165565}
-        m_TargetAssemblyTypeName: MenuManagement, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1436586865}
+        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -257,18 +256,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47165560}
   m_CullTransparentMesh: 1
---- !u!114 &47165565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47165560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309389c1dba94146936c2395cebb8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &272601823
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +650,7 @@ GameObject:
   - component: {fileID: 1436586863}
   - component: {fileID: 1436586862}
   - component: {fileID: 1436586861}
+  - component: {fileID: 1436586865}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -754,6 +742,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1436586865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436586860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26c7aebc84da3645a285d65da810fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1541481103
 GameObject:
   m_ObjectHideFlags: 0
