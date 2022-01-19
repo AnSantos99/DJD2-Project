@@ -131,14 +131,17 @@ public class PuzzleItems : MonoBehaviour
 
             if (puzzleItemType == PuzzleItemType.INDIRECT) 
             {
+                // If the object is Building rotate when interact
                 if (itemName == "Building")
                 {
                     RorateBuilding();
                 }
+                // if the object is camera switch view when interact
                 if (itemName == "Camera")
                 {
                     camSwitch.SwitchCam();
                 }
+                // if the object is a number for puzzle, rotate to make it visible
                 if (itemName == "Number")
                 {
                     RotateObject();
@@ -207,7 +210,7 @@ public class PuzzleItems : MonoBehaviour
         transform.Rotate(0, 0, -90);
     }
 
-
+    //Corroutine to shake the camera, making a eathquake efect
     private IEnumerator ShakeCamera(float timeShaking)
     {
         Vector3 position = transform.localPosition;
@@ -224,7 +227,7 @@ public class PuzzleItems : MonoBehaviour
 
 
 
-            transform.localPosition = new Vector3(position.x, posY, position.z);
+            transform.localPosition = new Vector3(position.x, posY + 1.0f, position.z);
             transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
 
             currentTime += Time.deltaTime;
