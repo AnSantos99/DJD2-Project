@@ -139,6 +139,10 @@ public class PuzzleItems : MonoBehaviour
                 //{
                 //    //StartCoroutine(WaitForAnimationToEnd());
                 //}
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
+                {
+                    StartCoroutine(WaitForAnimationToEnd());
+                }
             }
 
             if(puzzleItemType == PuzzleItemType.INDIRECT) 
@@ -150,6 +154,10 @@ public class PuzzleItems : MonoBehaviour
                 if (itemName == "Camera")
                 {
                     camSwitch.SwitchCam();
+                }
+                if (itemName == "Number")
+                {
+                    RotateObject();
                 }
             }
 
@@ -215,6 +223,15 @@ public class PuzzleItems : MonoBehaviour
 
         StartCoroutine(ShakeCamera(timeRotating));
     }
+
+    /// <summary>
+    /// Rotate the Object 90 degrees in the x axis
+    /// </summary>
+    private void RotateObject()
+    {
+        transform.Rotate(0, 0, -90);
+    }
+
 
     ///// <summary>
     ///// Wait a few second before disabling a object
