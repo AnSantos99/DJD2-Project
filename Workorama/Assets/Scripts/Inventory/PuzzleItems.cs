@@ -139,10 +139,6 @@ public class PuzzleItems : MonoBehaviour
                 //{
                 //    //StartCoroutine(WaitForAnimationToEnd());
                 //}
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
-                {
-                    StartCoroutine(WaitForAnimationToEnd());
-                }
             }
 
             if(puzzleItemType == PuzzleItemType.INDIRECT) 

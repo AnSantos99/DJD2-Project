@@ -62,6 +62,8 @@ public class CameraMovement : MonoBehaviour
                 transform.position = cam2D.position;
                 transform.rotation = cam2D.rotation;
                 transitTo2D = false;
+
+                this.GetComponent<Camera>().fieldOfView = 7f;
             }
         }
         
@@ -141,7 +143,7 @@ public class CameraMovement : MonoBehaviour
             Debug.Log("There is something wrong with the logic");
         }
 
-        this.GetComponent<Camera>().fieldOfView = 7f;
+        
         playerLook.enabled = false;
         playerMov.enabled = false;
 

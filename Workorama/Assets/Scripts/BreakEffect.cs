@@ -17,6 +17,7 @@ public class BreakEffect : MonoBehaviour
     // Radius defined for each piece to fall into
     [SerializeField] private float radius;
 
+    // Time for the piece objects to get destroyed
     [SerializeField] private float destroyPiecesTime;
 
     private bool collided;
@@ -24,7 +25,6 @@ public class BreakEffect : MonoBehaviour
     private void Start()
     {
         collided = false;
-
     }
 
     /// <summary>
