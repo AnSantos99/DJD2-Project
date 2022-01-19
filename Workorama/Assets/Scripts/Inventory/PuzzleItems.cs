@@ -155,6 +155,7 @@ public class PuzzleItems : MonoBehaviour
             {
                 GetComponent<Collider>().enabled = false;
                 gameObject.SetActive(false);
+                GetComponent<Outline>().enabled = true;
             }
 
             else if(puzzleItemType == PuzzleItemType.INTERACT_ONCE)

@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour
 
     private Inventory inventory;
 
-    private GameObject interactableObjsOutliner;
+
 
     // Check if puzzleItem has the requirements
     private bool hasRequirements;
@@ -22,8 +22,7 @@ public class Interaction : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        interactableObjsOutliner = FindObjectOfType<GameObject>();
-
+        
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
         currentInteractiveItems = null;
@@ -106,7 +105,10 @@ public class Interaction : MonoBehaviour
             currentInteractiveItems != null && hasRequirements)
         {
             if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE) 
-                PickCurrentInteractive();    
+            {
+                PickCurrentInteractive();
+            } 
+                    
 
             else
                 InteractWithCurrentInteractive();
