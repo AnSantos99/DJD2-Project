@@ -26,7 +26,6 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        playerHeight = 1.5f;
         playerLook = GetComponent<PlayerLook>();
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }

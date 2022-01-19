@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 71689184}
   - component: {fileID: 71689183}
   - component: {fileID: 71689187}
+  - component: {fileID: 71689188}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -247,6 +248,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &71689188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71689182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1309389c1dba94146936c2395cebb8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &196395125
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +408,6 @@ GameObject:
   - component: {fileID: 337360428}
   - component: {fileID: 337360427}
   - component: {fileID: 337360426}
-  - component: {fileID: 337360429}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -467,7 +479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 337360429}
+      - m_Target: {fileID: 71689188}
         m_TargetAssemblyTypeName: MenuManagement, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -517,18 +529,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337360424}
   m_CullTransparentMesh: 1
---- !u!114 &337360429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337360424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309389c1dba94146936c2395cebb8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &532044107
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +824,6 @@ GameObject:
   - component: {fileID: 1135279158}
   - component: {fileID: 1135279157}
   - component: {fileID: 1135279156}
-  - component: {fileID: 1135279159}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -896,7 +895,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1135279159}
+      - m_Target: {fileID: 71689188}
         m_TargetAssemblyTypeName: MenuManagement, Assembly-CSharp
         m_MethodName: ShowOptions
         m_Mode: 1
@@ -946,18 +945,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135279154}
   m_CullTransparentMesh: 1
---- !u!114 &1135279159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135279154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309389c1dba94146936c2395cebb8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1259357333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1184,6 @@ GameObject:
   - component: {fileID: 1491608171}
   - component: {fileID: 1491608170}
   - component: {fileID: 1491608169}
-  - component: {fileID: 1491608172}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1269,7 +1255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1491608172}
+      - m_Target: {fileID: 71689188}
         m_TargetAssemblyTypeName: MenuManagement, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -1319,18 +1305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491608167}
   m_CullTransparentMesh: 1
---- !u!114 &1491608172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491608167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1309389c1dba94146936c2395cebb8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1582030465
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,9 @@ public class CanvasManager : MonoBehaviour
         inventoryIcons[i].color = Color.white;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void ClearInventoryIcons()
     {
         for(int i = 0; i < inventoryIcons.Length; i++)
