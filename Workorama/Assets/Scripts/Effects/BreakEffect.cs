@@ -25,15 +25,10 @@ public class BreakEffect : MonoBehaviour
         collided = false;
     }
 
-    ///// <summary>
-    ///// Detect the object that needs to collide with this object
-    ///// </summary>
-    ///// <param name="col"></param>
-    //private void OnCollisionEnter(Collision col)
-    //{
-        
-    //}
-
+    /// <summary>
+    /// Detect collison and invoke the method to break object with delay
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
     {
         collided = true;

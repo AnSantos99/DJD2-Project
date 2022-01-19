@@ -31,7 +31,7 @@ public class MenuManagement : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene("Prototype2");
+        SceneManager.LoadScene("Game");
     }
 
     /// <summary>
@@ -77,7 +77,6 @@ public class MenuManagement : MonoBehaviour
     /// </summary>
     private void PauseGame()
     {
-        
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
