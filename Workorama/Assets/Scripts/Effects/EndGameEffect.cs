@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class EndGameEffect : MonoBehaviour
 {
+    [SerializeField]private Image fadeImg;
     /// <summary>
     /// Unlock cursor
     /// </summary>
@@ -27,7 +29,13 @@ public class EndGameEffect : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitForEnd()
     {
-        yield return new WaitForSeconds(3.5f);
+
+        for (float i = 0; i <= 1.5f; i += Time.deltaTime)
+        {
+            // set color with i as alpha
+            fadeImg.color = new Color(0, 0, 0, i);
+            yield return null;
+        }
 
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.SetActive(false);
