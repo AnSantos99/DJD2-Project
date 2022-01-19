@@ -59,14 +59,17 @@ public class CodeLocker : MonoBehaviour
     {
         if (attemptedCode == code)
         {
-            animator.SetTrigger("Right");
+            animator.SetTrigger("Right"); 
+            
+            //FindObjectOfType<SoundManager>().Play("PassW_Comb_Right");
 
             doorAnim.SetTrigger("Interact");
         }
 
         else
         {
-            animator.SetTrigger("Wrong");
+            animator.SetTrigger("Wrong"); 
+            //FindObjectOfType<SoundManager>().Play("PassW_Comb_Wrong");
         }
     }
 
