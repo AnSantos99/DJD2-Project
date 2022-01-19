@@ -32,7 +32,7 @@ public class MenuManagement : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene("Prototype2");
+        SceneManager.LoadScene("KeypadFix");
     }
 
     /// <summary>
