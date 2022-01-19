@@ -1,7 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
-
 
 public class BreakEffect : MonoBehaviour
 {
@@ -20,6 +17,7 @@ public class BreakEffect : MonoBehaviour
     // Time for the piece objects to get destroyed
     [SerializeField] private float destroyPiecesTime;
 
+    // Check if object has collided
     private bool collided;
 
     private void Start()
@@ -27,20 +25,23 @@ public class BreakEffect : MonoBehaviour
         collided = false;
     }
 
-    /// <summary>
-    /// Detect the object that needs to collide with this object
-    /// </summary>
-    /// <param name="col"></param>
-    private void OnCollisionEnter(Collision col)
+    ///// <summary>
+    ///// Detect the object that needs to collide with this object
+    ///// </summary>
+    ///// <param name="col"></param>
+    //private void OnCollisionEnter(Collision col)
+    //{
+        
+    //}
+
+    private void OnCollisionStay(Collision collision)
     {
         collided = true;
 
-        if (col.gameObject.tag == "Hammer")
+        if (collision.gameObject.tag == "Hammer")
         {
             if (collided == true)
-            {
                 Invoke("CreateFractures", delay);
-            }
         }
     }
 
@@ -93,6 +94,7 @@ public class BreakEffect : MonoBehaviour
         Rigidbody rb = piece.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
 
+        // Destroy pieces after timedelay
         if (destroyPiecesTime > 0)
             Destroy(piece, destroyPiecesTime);
     }
