@@ -151,6 +151,10 @@ public class PuzzleItems : MonoBehaviour
                 {
                     camSwitch.SwitchCam();
                 }
+                if (itemName == "Number")
+                {
+                    RotateObject();
+                }
             }
 
             else if(puzzleItemType == PuzzleItemType.PICKABLE)
@@ -215,6 +219,15 @@ public class PuzzleItems : MonoBehaviour
 
         StartCoroutine(ShakeCamera(timeRotating));
     }
+
+    /// <summary>
+    /// Rotate the Object 90 degrees in the x axis
+    /// </summary>
+    private void RotateObject()
+    {
+        transform.Rotate(0, 0, -90);
+    }
+
 
     /// <summary>
     /// Wait a few second before disabling a object
