@@ -46,6 +46,7 @@ public class CodeLocker : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
+            FindObjectOfType<SoundManager>().Play("PassRight");
             animator.SetTrigger("Right");
             doorAnim.SetTrigger("Interact");
         }
@@ -59,17 +60,17 @@ public class CodeLocker : MonoBehaviour
     {
         if (attemptedCode == code)
         {
-            animator.SetTrigger("Right"); 
-            
-            //FindObjectOfType<SoundManager>().Play("PassW_Comb_Right");
+            animator.SetTrigger("Right");
+
+            FindObjectOfType<SoundManager>().Play("PassRight");
 
             doorAnim.SetTrigger("Interact");
         }
 
         else
         {
-            animator.SetTrigger("Wrong"); 
-            //FindObjectOfType<SoundManager>().Play("PassW_Comb_Wrong");
+            animator.SetTrigger("Wrong");
+            FindObjectOfType<SoundManager>().Play("PassWrong");
         }
     }
 

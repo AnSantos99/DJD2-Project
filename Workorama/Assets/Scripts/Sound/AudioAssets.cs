@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class AudioAssets
 {
+    // Defines what is askde on the Inspector
+    // To edit in each Audio Source
     public string name;
 
     public AudioClip clip;

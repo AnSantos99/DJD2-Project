@@ -48,6 +48,7 @@ public class LockerInputController : MonoBehaviour
                 string value = hit.transform.name;
                 codeLock.SetValue(value);
                 anim.Play();
+                FindObjectOfType<SoundManager>().Play("KeyPress");
             }
         }
     }

@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        // Creates an Audio Source for each AudioAssets
+        // With each defined settings
         foreach (AudioAssets s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -18,9 +20,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+
+    // Playes the defined Audio Sound with the defined settings when called
     public void Play(string name)
     {
         AudioAssets s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
+    }
+    
+    //Stops the Audio Source from playing when called
+    public void Stop(string name)
+    {
+        AudioAssets s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Stop();
     }
 }

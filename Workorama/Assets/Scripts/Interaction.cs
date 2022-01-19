@@ -105,8 +105,11 @@ public class Interaction : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && 
             currentInteractiveItems != null && hasRequirements)
         {
-            if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE) 
-                PickCurrentInteractive();    
+            if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE)
+            {
+                PickCurrentInteractive();
+                FindObjectOfType<SoundManager>().Play("ItemPickup");
+            } 
 
             else
                 InteractWithCurrentInteractive();

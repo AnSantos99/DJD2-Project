@@ -36,7 +36,10 @@ public class BreakEffect : MonoBehaviour
         if (collision.gameObject.tag == "Hammer")
         {
             if (collided == true)
+            {
+                FindObjectOfType<SoundManager>().Play("ShatterGlass");
                 Invoke("CreateFractures", delay);
+            }
         }
     }
 
