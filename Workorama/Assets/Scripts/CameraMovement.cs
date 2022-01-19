@@ -22,6 +22,8 @@ public class CameraMovement : MonoBehaviour
     private int camMask = -1;
     private float currentTime;
 
+    [SerializeField]private AudioSource sm;
+
     void Start()
     {
         playerHeight = 1.5f;
@@ -53,6 +55,9 @@ public class CameraMovement : MonoBehaviour
                 transitToPlayer = false;
                 playerLook.enabled = true;
                 playerMov.enabled = true;
+
+                FindObjectOfType<SoundManager>().Stop("ArcadeRoom");
+                sm.volume = 0.112f;
             }
         }
 
@@ -72,6 +77,9 @@ public class CameraMovement : MonoBehaviour
                 transitTo2D = false;
 
                 this.GetComponent<Camera>().fieldOfView = 7f;
+
+                FindObjectOfType<SoundManager>().Play("ArcadeRoom");
+                sm.volume = 0.05f;
             }
         }   
     }
