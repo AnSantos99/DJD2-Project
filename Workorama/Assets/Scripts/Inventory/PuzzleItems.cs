@@ -64,7 +64,10 @@ public class PuzzleItems : MonoBehaviour
         playerMov = (PlayerMov)FindObjectOfType(typeof(PlayerMov));
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
-        camSwitch = this.gameObject.GetComponent<CameraMovement>();
+        //camSwitch = this.gameObject.GetComponent<CameraMovement>();
+        camSwitch = (CameraMovement)FindObjectOfType(typeof(CameraMovement));
+
+
         curInteractionTextId = 0;
     }
 
@@ -199,7 +202,7 @@ public class PuzzleItems : MonoBehaviour
         playerLook.enabled = false;
         playerMov.enabled = false;
 
-        StartCoroutine(ShakeCamera(timeRotating));
+        camSwitch.CamShakeDown(timeRotating);
     }
 
     /// <summary>
@@ -208,37 +211,5 @@ public class PuzzleItems : MonoBehaviour
     private void RotateObject()
     {
         transform.Rotate(0, 0, -90);
-    }
-
-    //Corroutine to shake the camera, making a eathquake efect
-    private IEnumerator ShakeCamera(float timeShaking)
-    {
-        Vector3 position = transform.localPosition;
-        Quaternion rotation = transform.localRotation;
-
-        while (currentTime < timeShaking)
-        {
-            float posX = Random.Range(-1f, 1f) * 0.05f;
-            float posY = Random.Range(-1f, 1f) * 0.1f;
-
-            float rotX = Random.Range(-1f, 1f) * 0.001f;
-            float rotY = Random.Range(-1f, 1f) * 0.01f;
-            float rotZ = Random.Range(-1f, 1f) * 0.001f;
-
-
-
-            transform.localPosition = new Vector3(position.x, posY + 1.0f, position.z);
-            transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
-
-            currentTime += Time.deltaTime;
-
-            yield return null;
-        }
-        transform.localPosition = position;
-        transform.localRotation = rotation;
-
-        playerLook.enabled = true;
-        playerMov.enabled = true;
-        currentTime = 0.0f;
     }
 }

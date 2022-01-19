@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
     private bool transitToPlayer = false;
     private bool transitTo2D = false;
     private int camMask = -1;
+    private float currentTime;
 
     void Start()
     {
@@ -170,5 +171,38 @@ public class CameraMovement : MonoBehaviour
     private void UpdateCamera()
     {
         this.GetComponent<Camera>().cullingMask = camMask;
+    }
+
+
+    public void CamShakeDown(float timeRotating)
+    {
+        StartCoroutine(ShakeCamera(timeRotating));
+    }
+
+    //Corroutine to shake the camera, making a eathquake efect
+    private IEnumerator ShakeCamera(float timeShaking)
+    {
+        Vector3 position = transform.localPosition;
+        Quaternion rotation = transform.localRotation;
+
+        while (currentTime < timeShaking)
+        {
+            float rotX = Random.Range(-1f, 1f) * 0.001f;
+            float rotY = Random.Range(-1f, 1f) * 0.01f;
+            float rotZ = Random.Range(-1f, 1f) * 0.001f;
+
+            transform.localPosition = new Vector3(position.x, position.y - 2f, position.z);
+            transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
+
+            currentTime += Time.deltaTime;
+
+            yield return null;
+        }
+        transform.localPosition = position;
+        transform.localRotation = rotation;
+
+        playerLook.enabled = true;
+        playerMov.enabled = true;
+        currentTime = 0.0f;
     }
 }
