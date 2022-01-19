@@ -20,8 +20,8 @@ public class CameraMovement : MonoBehaviour
     private bool transitToPlayer = false;
     private bool transitTo2D = false;
     private int camMask = -1;
+    private float currentTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerHeight = 1.5f;
@@ -29,7 +29,6 @@ public class CameraMovement : MonoBehaviour
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateCamera();
@@ -37,6 +36,7 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
+        // If state of camera is switching to player make it smoth transition until get close enough to switch to player
         if (transitToPlayer)
         {
             transform.position = Vector3.Slerp(transform.position, player.position , Time.deltaTime * transitionSpeed);
@@ -52,6 +52,7 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
+        // If state of camera is switching to 2D view make it smoth transition until get close enough to switch to 2D view
         if (transitTo2D)
         {
             transform.position = Vector3.Slerp(transform.position, cam2D.position , Time.deltaTime * transitionSpeed);
@@ -71,16 +72,20 @@ public class CameraMovement : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Switch cam to player
+    /// </summary>
     public void ReturnToPlayer()
     {
-        //transform.position = new Vector3(player.position.x, player.position.y + 0.52f, player.position.z + 0.2f);
-        //transform.rotation = player.rotation;
         transitToPlayer = true;
 
         camMask = -1;
         this.GetComponent<Camera>().fieldOfView = 60f;
     }
 
+    /// <summary>
+    /// Check if the cam need to be switch to 2D or 3D view
+    /// </summary>
     public void SwitchCam()
     {
         if (Check2DSwitch())
@@ -94,7 +99,9 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Check if the cam need to be switch to 2D view
+    /// </summary>
     private bool Check2DSwitch()
     {
         if (transform.position.x < 250)
@@ -104,6 +111,9 @@ public class CameraMovement : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Switch to 2D view, and check witch wall have to be ignored
+    /// </summary>
     private void SwitchTo2D()
     {
         float northDif = cam2D.position.x - helpCamNorth.position.x; 
@@ -111,8 +121,6 @@ public class CameraMovement : MonoBehaviour
         float eastDif = cam2D.position.x - helpCamEast.position.x; 
         float westDif = cam2D.position.x - helpCamWest.position.x; 
 
-        //transform.position = cam2D.position;
-        //transform.rotation = cam2D.rotation;
         transitTo2D = true;
         camMask = -1;
 
@@ -149,15 +157,53 @@ public class CameraMovement : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Switch to 3D view
+    /// </summary>
     private void SwitchTo3D()
     {
         ReturnToPlayer();
     }
 
-
-
+    /// <summary>
+    /// //Update camera Culling mask to ignore walls
+    /// </summary>
     private void UpdateCamera()
     {
         this.GetComponent<Camera>().cullingMask = camMask;
+    }
+
+
+    public void CamShakeDown(float timeRotating)
+    {
+        StartCoroutine(ShakeCamera(timeRotating));
+    }
+
+    //Corroutine to shake the camera, making a eathquake efect
+    private IEnumerator ShakeCamera(float timeShaking)
+    {
+        Vector3 position = transform.localPosition;
+        Quaternion rotation = transform.localRotation;
+
+        while (currentTime < timeShaking)
+        {
+            float rotX = Random.Range(-1f, 1f) * 0.001f;
+            float rotY = Random.Range(-1f, 1f) * 0.01f;
+            float rotZ = Random.Range(-1f, 1f) * 0.001f;
+
+            transform.localPosition = new Vector3(position.x, position.y - 2f, position.z);
+            transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
+
+            currentTime += Time.deltaTime;
+
+            yield return null;
+        }
+        transform.localPosition = position;
+        transform.localRotation = rotation;
+
+        playerLook.enabled = true;
+        playerMov.enabled = true;
+        transform.position = new Vector3(player.position.x, player.position.y + playerHeight, player.position.z);
+        currentTime = 0.0f;
     }
 }
