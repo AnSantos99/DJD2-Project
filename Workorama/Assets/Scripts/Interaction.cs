@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    private const float INTERACTION_DISTANCE = 2.0f;
+    private const float INTERACTION_DISTANCE = 3.0f;
 
     [SerializeField]
     private CanvasManager canvasManager;
@@ -13,6 +13,8 @@ public class Interaction : MonoBehaviour
 
     private Inventory inventory;
 
+    private GameObject interactableObjsOutliner;
+
     // Check if puzzleItem has the requirements
     private bool hasRequirements;
 
@@ -20,6 +22,8 @@ public class Interaction : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        interactableObjsOutliner = FindObjectOfType<GameObject>();
+
         cameraTransform = GetComponentInChildren<Camera>().transform;
         hasRequirements = false;
         currentInteractiveItems = null;
@@ -48,11 +52,28 @@ public class Interaction : MonoBehaviour
             if (interactiveItems == null || !interactiveItems.IsActive())
                 ClearCurrentInteractive();
 
-            else if (interactiveItems != currentInteractiveItems)
+            else if (interactiveItems != currentInteractiveItems) 
                 SetCurrentInteractive(interactiveItems);
         }
-        else
+        else 
             ClearCurrentInteractive();
+            
+    }
+
+    private void ObjectsOutliner(PuzzleItems interactiveItem, RaycastHit hitInfo) 
+    {
+        if (hitInfo.transform.gameObject.tag == "Interactable" && 
+            interactiveItem != null)
+        {
+            interactableObjsOutliner = interactiveItem.gameObject;
+            interactableObjsOutliner.GetComponent<Outline>().enabled = true;
+        }
+
+        else 
+        {
+            interactableObjsOutliner.GetComponent<Outline>().enabled = false;
+            interactableObjsOutliner = null;
+        }
     }
 
     public void ClearCurrentInteractive()

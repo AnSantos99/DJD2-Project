@@ -81,6 +81,7 @@ public class MenuManagement : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        UnlockCursor();
     }
 
     /// <summary>
@@ -91,5 +92,24 @@ public class MenuManagement : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        LockCursor();
+    }
+
+    /// <summary>
+    /// UnlockCursor to be visible on screen
+    /// </summary>
+    private void UnlockCursor() 
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    /// <summary>
+    /// Lockcursor in game
+    /// </summary>
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 }

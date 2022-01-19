@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Carpet
   - Hammer
+  - Interactable
   layers:
   - Default
   - TransparentFX

@@ -230,7 +230,7 @@ public class PuzzleItems : MonoBehaviour
     //    UnlockCursor();
 
     //    SceneManager.LoadScene("Endgame");
-    }
+    //}
 
     private IEnumerator ShakeCamera(float timeShaking)
     {
@@ -245,7 +245,7 @@ public class PuzzleItems : MonoBehaviour
             float rotX = Random.Range(-1f, 1f) * 0.001f;
             float rotY = Random.Range(-1f, 1f) * 0.01f;
             float rotZ = Random.Range(-1f, 1f) * 0.001f;
-        
+
 
 
             transform.localPosition = new Vector3(position.x, posY, position.z);
@@ -260,5 +260,6 @@ public class PuzzleItems : MonoBehaviour
 
         playerLook.enabled = true;
         playerMov.enabled = true;
-        currentTime = 0.0f; 
+        currentTime = 0.0f;
+    }
 }
