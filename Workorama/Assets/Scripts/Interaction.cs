@@ -35,6 +35,7 @@ public class Interaction : MonoBehaviour
     private void Update()
     {
         LockForInteractive();
+
         CheckForPlayerInteraction();
     }
 
@@ -58,22 +59,6 @@ public class Interaction : MonoBehaviour
         else 
             ClearCurrentInteractive();
             
-    }
-
-    private void ObjectsOutliner(PuzzleItems interactiveItem, RaycastHit hitInfo) 
-    {
-        if (hitInfo.transform.gameObject.tag == "Interactable" && 
-            interactiveItem != null)
-        {
-            interactableObjsOutliner = interactiveItem.gameObject;
-            interactableObjsOutliner.GetComponent<Outline>().enabled = true;
-        }
-
-        else 
-        {
-            interactableObjsOutliner.GetComponent<Outline>().enabled = false;
-            interactableObjsOutliner = null;
-        }
     }
 
     public void ClearCurrentInteractive()
@@ -120,8 +105,8 @@ public class Interaction : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && 
             currentInteractiveItems != null && hasRequirements)
         {
-            if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE)
-                PickCurrentInteractive();
+            if (currentInteractiveItems.InterActionType() == PuzzleItemType.PICKABLE) 
+                PickCurrentInteractive();    
 
             else
                 InteractWithCurrentInteractive();

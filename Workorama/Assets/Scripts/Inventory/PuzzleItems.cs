@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PuzzleItems : MonoBehaviour
 {
@@ -39,7 +38,6 @@ public class PuzzleItems : MonoBehaviour
     [SerializeField]
     private float timeRotating = 3.0f;
 
-
     [SerializeField]
     private PuzzleItems[] interactionChain;
 
@@ -59,11 +57,6 @@ public class PuzzleItems : MonoBehaviour
     private int curInteractionTextId;
     private Quaternion nextBuildingRotation;
     private float currentTime;
-
-    /// <summary>
-    /// Get the item name
-    /// </summary>
-    public string ItemName { get => itemName; }
 
     private void Start() 
     {   
@@ -134,14 +127,9 @@ public class PuzzleItems : MonoBehaviour
             if (animator != null)
             {
                 animator.SetTrigger("Interact");
-
-                //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
-                //{
-                //    //StartCoroutine(WaitForAnimationToEnd());
-                //}
             }
 
-            if(puzzleItemType == PuzzleItemType.INDIRECT) 
+            if (puzzleItemType == PuzzleItemType.INDIRECT) 
             {
                 if (itemName == "Building")
                 {
@@ -200,15 +188,6 @@ public class PuzzleItems : MonoBehaviour
     }
 
     /// <summary>
-    /// Unlock cursor
-    /// </summary>
-    private void UnlockCursor()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    /// <summary>
     /// Rotate the building
     /// </summary>
     private void RorateBuilding()
@@ -228,22 +207,6 @@ public class PuzzleItems : MonoBehaviour
         transform.Rotate(0, 0, -90);
     }
 
-
-    ///// <summary>
-    ///// Wait a few second before disabling a object
-    ///// </summary>
-    ///// <returns></returns>
-    //private IEnumerator WaitForAnimationToEnd() 
-    //{
-    //    yield return new WaitForSeconds(3.5f);
-
-    //    gameObject.GetComponent<Collider>().enabled = false;
-    //    gameObject.SetActive(false);
-
-    //    UnlockCursor();
-
-    //    SceneManager.LoadScene("Endgame");
-    //}
 
     private IEnumerator ShakeCamera(float timeShaking)
     {
