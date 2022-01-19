@@ -37,7 +37,14 @@ public class PuzzleItems : MonoBehaviour
 
     // Activates another puzzle item after the previous one has been done
     [SerializeField]
+    private float timeRotating = 3.0f;
+
+
+    [SerializeField]
     private PuzzleItems[] interactionChain;
+
+    private PlayerLook playerLook;
+    private PlayerMov playerMov;
 
     // Get the animators of the components
     private Animator animator;
@@ -50,6 +57,8 @@ public class PuzzleItems : MonoBehaviour
 
     // set up the current text ID
     private int curInteractionTextId;
+    private Quaternion nextBuildingRotation;
+    private float currentTime;
 
     /// <summary>
     /// Get the item name
@@ -57,14 +66,14 @@ public class PuzzleItems : MonoBehaviour
     public string ItemName { get => itemName; }
 
     private void Start() 
-    {
+    {   
+        playerLook = (PlayerLook)FindObjectOfType(typeof(PlayerLook));
+        playerMov = (PlayerMov)FindObjectOfType(typeof(PlayerMov));
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
         camSwitch = this.gameObject.GetComponent<CameraMovement>();
         curInteractionTextId = 0;
     }
-
-
 
     /*-------------------------------------------------------------------------
      --------------------------------------------------------------------------
@@ -126,10 +135,10 @@ public class PuzzleItems : MonoBehaviour
             {
                 animator.SetTrigger("Interact");
 
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
-                {
-                    StartCoroutine(WaitForAnimationToEnd());
-                }
+                //if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) 
+                //{
+                //    //StartCoroutine(WaitForAnimationToEnd());
+                //}
             }
 
             if(puzzleItemType == PuzzleItemType.INDIRECT) 
@@ -141,6 +150,10 @@ public class PuzzleItems : MonoBehaviour
                 if (itemName == "Camera")
                 {
                     camSwitch.SwitchCam();
+                }
+                if (itemName == "Number")
+                {
+                    RotateObject();
                 }
             }
 
@@ -200,22 +213,66 @@ public class PuzzleItems : MonoBehaviour
     /// </summary>
     private void RorateBuilding()
     {
-        transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        transform.Rotate(0, 90, 0);
+        playerLook.enabled = false;
+        playerMov.enabled = false;
+
+        StartCoroutine(ShakeCamera(timeRotating));
     }
 
     /// <summary>
-    /// Wait a few second before disabling a object
+    /// Rotate the Object 90 degrees in the x axis
     /// </summary>
-    /// <returns></returns>
-    private IEnumerator WaitForAnimationToEnd() 
+    private void RotateObject()
     {
-        yield return new WaitForSeconds(3.5f);
+        transform.Rotate(0, 0, -90);
+    }
 
-        gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.SetActive(false);
 
-        UnlockCursor();
+    ///// <summary>
+    ///// Wait a few second before disabling a object
+    ///// </summary>
+    ///// <returns></returns>
+    //private IEnumerator WaitForAnimationToEnd() 
+    //{
+    //    yield return new WaitForSeconds(3.5f);
 
-        SceneManager.LoadScene("Endgame");
+    //    gameObject.GetComponent<Collider>().enabled = false;
+    //    gameObject.SetActive(false);
+
+    //    UnlockCursor();
+
+    //    SceneManager.LoadScene("Endgame");
+    //}
+
+    private IEnumerator ShakeCamera(float timeShaking)
+    {
+        Vector3 position = transform.localPosition;
+        Quaternion rotation = transform.localRotation;
+
+        while (currentTime < timeShaking)
+        {
+            float posX = Random.Range(-1f, 1f) * 0.05f;
+            float posY = Random.Range(-1f, 1f) * 0.1f;
+
+            float rotX = Random.Range(-1f, 1f) * 0.001f;
+            float rotY = Random.Range(-1f, 1f) * 0.01f;
+            float rotZ = Random.Range(-1f, 1f) * 0.001f;
+
+
+
+            transform.localPosition = new Vector3(position.x, posY, position.z);
+            transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
+
+            currentTime += Time.deltaTime;
+
+            yield return null;
+        }
+        transform.localPosition = position;
+        transform.localRotation = rotation;
+
+        playerLook.enabled = true;
+        playerMov.enabled = true;
+        currentTime = 0.0f;
     }
 }

@@ -9,11 +9,14 @@ public class PlayerMov : MonoBehaviour
     [SerializeField]private float runBuildUpSpeed;
     [SerializeField]private KeyCode runKey;
 
-    private Animator anim;
-
     private float movementSpeed;
 
     private CharacterController charController;
+
+    /// <summary>
+    /// Animation controller
+    /// </summary>
+    private Animator anim;
 
     private void Awake()
     {
@@ -26,6 +29,9 @@ public class PlayerMov : MonoBehaviour
         PlayerMovement();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void PlayerMovement()
     {
         float horizInput = Input.GetAxis(horizontalInputName);
@@ -40,6 +46,9 @@ public class PlayerMov : MonoBehaviour
         SetMovementSpeed();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void SetMovementSpeed()
     {
         if (Input.GetKey(runKey))
@@ -47,15 +56,22 @@ public class PlayerMov : MonoBehaviour
             movementSpeed = Mathf.Lerp(movementSpeed, runSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            anim.SetFloat("Speed", runSpeed);
+            anim.SetFloat("Speed", 1f, 0.1f, Time.deltaTime);
         }
 
-        else
+        else if(Input.GetAxis(horizontalInputName ) < 0 || 
+            Input.GetAxis(verticalInputName) < 0 || 
+            Input.GetAxis(horizontalInputName) > 0 || 
+            Input.GetAxis(verticalInputName) > 0)
         {
             movementSpeed = Mathf.Clamp(movementSpeed, walkSpeed, 
                 Time.deltaTime * runBuildUpSpeed);
 
-            //anim.SetFloat("Speed", movementSpeed);
+            anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
         }
+
+        // Idle Animation on 0 speed movement
+        else
+            anim.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
     }
 }
