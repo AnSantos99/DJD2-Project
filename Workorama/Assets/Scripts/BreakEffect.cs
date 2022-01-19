@@ -17,25 +17,33 @@ public class BreakEffect : MonoBehaviour
     // Radius defined for each piece to fall into
     [SerializeField] private float radius;
 
+    [SerializeField] private float destroyPiecesTime;
+
+    private bool collided;
+
     private void Start()
     {
-        Invoke("CreateFractures", delay);
+        collided = false;
 
     }
-
 
     /// <summary>
     /// Detect the object that needs to collide with this object
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
+    /// <param name="col"></param>
+    private void OnCollisionEnter(Collision col)
     {
-        if (collision.gameObject.tag == "Hammer")
+        collided = true;
+
+        if (col.gameObject.tag == "Hammer")
         {
-            CreateFractures();
-            //Invoke("CreateFractures", delay);
+            if (collided == true)
+            {
+                Invoke("CreateFractures", delay);
+            }
         }
     }
+
 
     /// <summary>
     /// Create all the pieces in every position 
@@ -85,6 +93,7 @@ public class BreakEffect : MonoBehaviour
         Rigidbody rb = piece.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
 
-        Destroy(piece);
+        if (destroyPiecesTime > 0)
+            Destroy(piece, destroyPiecesTime);
     }
 }

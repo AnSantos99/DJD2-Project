@@ -17047,6 +17047,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3172847310735844780, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
+      propertyPath: force
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172847310735844780, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
+      propertyPath: piecesPerAxis
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172847310735844780, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
+      propertyPath: destroyPiecesTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
 --- !u!1001 &947286659
