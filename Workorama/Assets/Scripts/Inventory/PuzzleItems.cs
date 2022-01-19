@@ -55,8 +55,6 @@ public class PuzzleItems : MonoBehaviour
 
     // set up the current text ID
     private int curInteractionTextId;
-    private Quaternion nextBuildingRotation;
-    private float currentTime;
 
     private void Start() 
     {   
@@ -64,9 +62,7 @@ public class PuzzleItems : MonoBehaviour
         playerMov = (PlayerMov)FindObjectOfType(typeof(PlayerMov));
         animator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
-        //camSwitch = this.gameObject.GetComponent<CameraMovement>();
         camSwitch = (CameraMovement)FindObjectOfType(typeof(CameraMovement));
-
 
         curInteractionTextId = 0;
     }
@@ -155,7 +151,6 @@ public class PuzzleItems : MonoBehaviour
             {
                 GetComponent<Collider>().enabled = false;
                 gameObject.SetActive(false);
-                GetComponent<Outline>().enabled = true;
             }
 
             else if(puzzleItemType == PuzzleItemType.INTERACT_ONCE)
