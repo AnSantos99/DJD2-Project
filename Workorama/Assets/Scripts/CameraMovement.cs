@@ -36,15 +36,19 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        // If state of camera is switching to player make it smoth transition until get close enough to switch to player
+        // If state of camera is switching to player make it smoth transition
+        // until get close enough to switch to player
         if (transitToPlayer)
         {
-            transform.position = Vector3.Slerp(transform.position, player.position , Time.deltaTime * transitionSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, player.rotation , Time.deltaTime * rotationSpeed);
+            transform.position = Vector3.Slerp(transform.position, 
+                player.position , Time.deltaTime * transitionSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, 
+                player.rotation , Time.deltaTime * rotationSpeed);
             Debug.Log(Vector3.Distance(transform.position, player.position));
             if (Vector3.Distance(transform.position, player.position) < 2f)
             {
-                transform.position = new Vector3(player.position.x, player.position.y + playerHeight, player.position.z);
+                transform.position = new Vector3(player.position.x, 
+                    player.position.y + playerHeight, player.position.z);
                 transform.rotation = player.rotation;
                 transitToPlayer = false;
                 playerLook.enabled = true;
@@ -52,11 +56,14 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        // If state of camera is switching to 2D view make it smoth transition until get close enough to switch to 2D view
+        // If state of camera is switching to 2D view make it smoth transition
+        // until get close enough to switch to 2D view
         if (transitTo2D)
         {
-            transform.position = Vector3.Slerp(transform.position, cam2D.position , Time.deltaTime * transitionSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, cam2D.rotation , Time.deltaTime * rotationSpeed);
+            transform.position = Vector3.Slerp(transform.position, 
+                cam2D.position , Time.deltaTime * transitionSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, 
+                cam2D.rotation , Time.deltaTime * rotationSpeed);
             Debug.Log(Vector3.Distance(transform.position, cam2D.position));
             if (Vector3.Distance(transform.position, cam2D.position) < 2f)
             {
@@ -66,10 +73,7 @@ public class CameraMovement : MonoBehaviour
 
                 this.GetComponent<Camera>().fieldOfView = 7f;
             }
-        }
-        
-
-        
+        }   
     }
 
     /// <summary>
@@ -173,13 +177,21 @@ public class CameraMovement : MonoBehaviour
         this.GetComponent<Camera>().cullingMask = camMask;
     }
 
-
+    /// <summary>
+    /// To start coroutine
+    /// </summary>
+    /// <param name="timeRotating"></param>
     public void CamShakeDown(float timeRotating)
     {
         StartCoroutine(ShakeCamera(timeRotating));
     }
 
-    //Corroutine to shake the camera, making a eathquake efect
+
+    /// <summary>
+    /// Corroutine to shake the camera, making a eathquake efect
+    /// </summary>
+    /// <param name="timeShaking"> Time for shakedown </param>
+    /// <returns></returns>
     private IEnumerator ShakeCamera(float timeShaking)
     {
         Vector3 position = transform.localPosition;
@@ -191,7 +203,8 @@ public class CameraMovement : MonoBehaviour
             float rotY = Random.Range(-1f, 1f) * 0.01f;
             float rotZ = Random.Range(-1f, 1f) * 0.001f;
 
-            transform.localPosition = new Vector3(position.x, position.y - 2f, position.z);
+            transform.localPosition = new Vector3(position.x, position.y - 2f, 
+                position.z);
             transform.localRotation = new Quaternion(rotX, rotY, rotZ, 1);
 
             currentTime += Time.deltaTime;
@@ -203,7 +216,8 @@ public class CameraMovement : MonoBehaviour
 
         playerLook.enabled = true;
         playerMov.enabled = true;
-        transform.position = new Vector3(player.position.x, player.position.y + playerHeight, player.position.z);
+        transform.position = new Vector3(player.position.x, player.position.y + 
+            playerHeight, player.position.z);
         currentTime = 0.0f;
     }
 }
