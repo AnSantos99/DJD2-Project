@@ -75,7 +75,7 @@ public class MenuManagement : MonoBehaviour
     /// <summary>
     /// Pause game and "freeze" time
     /// </summary>
-    private void PauseGame()
+    public void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
