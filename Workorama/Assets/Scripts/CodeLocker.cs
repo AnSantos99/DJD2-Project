@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Class that handles the codelocker to check if the password is right or
+/// wrong
+/// </summary>
 public class CodeLocker : MonoBehaviour
 {
     //The required code lenght
@@ -23,9 +27,11 @@ public class CodeLocker : MonoBehaviour
     /// object
     /// </summary>
     [SerializeField]private Animator doorAnim;
+
+    /// <summary>
+    /// Get access to Animator instances and methods
+    /// </summary>
     private Animator animator;
-
-
 
     // Start is called before the first frame update
     private void Start()
@@ -34,10 +40,7 @@ public class CodeLocker : MonoBehaviour
         codeLength = code.Length;
     }
 
-    private void Update()
-    {
-        Cheat();
-    }
+    private void Update() => Cheat();
 
     /// <summary>
     /// Method to pass the padlock puzzle
@@ -83,9 +86,7 @@ public class CodeLocker : MonoBehaviour
         placeInCode++;
 
         if (placeInCode <= codeLength)
-        {
             attemptedCode += value;
-        }
 
         if (placeInCode == codeLength)
         {

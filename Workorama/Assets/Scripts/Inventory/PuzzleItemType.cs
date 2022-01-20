@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// Enum to define the possible existent types of items
+/// </summary>
 public enum PuzzleItemType
 {
     PICKABLE, 

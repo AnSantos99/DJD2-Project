@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class that defines what a puzzle item is
+/// </summary>
 public class PuzzleItems : MonoBehaviour
 {
     // Store name of item
@@ -111,10 +114,7 @@ public class PuzzleItems : MonoBehaviour
     /// <summary>
     /// To activate animation of items
     /// </summary>
-    public void Activate()
-    {
-        isActive = true;
-    }
+    public void Activate() => isActive = true;
 
     /// <summary>
     /// Interaction with different types of items
@@ -124,27 +124,21 @@ public class PuzzleItems : MonoBehaviour
         if(isActive)
         {
             if (animator != null)
-            {
                 animator.SetTrigger("Interact");
-            }
 
             if (puzzleItemType == PuzzleItemType.INDIRECT) 
             {
                 // If the object is Building rotate when interact
                 if (itemName == "Building")
-                {
                     RorateBuilding();
-                }
+
                 // if the object is camera switch view when interact
                 if (itemName == "Camera")
-                {
                     camSwitch.SwitchCam();
-                }
+
                 // if the object is a number for puzzle, rotate to make it visible
                 if (itemName == "Number")
-                {
                     RotateObject();
-                }
             }
 
             else if(puzzleItemType == PuzzleItemType.PICKABLE)
@@ -204,8 +198,5 @@ public class PuzzleItems : MonoBehaviour
     /// <summary>
     /// Rotate the Object 90 degrees in the x axis
     /// </summary>
-    private void RotateObject()
-    {
-        transform.Rotate(0, 0, -90);
-    }
+    private void RotateObject() => transform.Rotate(0, 0, -90);
 }

@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Class that handles where the player is looking at
+/// </summary>
 public class PlayerLook : MonoBehaviour
 {
     /// <summary>
@@ -42,10 +43,8 @@ public class PlayerLook : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
-    {
-        CameraRotation();
-    }
+    private void Update() => CameraRotation();
+
 
     /// <summary>
     /// Rotate camera according to mouse input and sensitivity with its given
@@ -76,7 +75,6 @@ public class PlayerLook : MonoBehaviour
 
         transform.Rotate(Vector3.left * mouseY);
         playerBody.Rotate(Vector3.up * mouseX);
-
     }
 
     /// <summary>

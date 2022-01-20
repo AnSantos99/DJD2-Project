@@ -3,9 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class specialized for the Endgame effect
+/// </summary>
 public class EndGameEffect : MonoBehaviour
 {
+    /// <summary>
+    /// Get fadeway image
+    /// </summary>
     [SerializeField]private Image fadeImg;
+
     /// <summary>
     /// Unlock cursor
     /// </summary>
@@ -15,12 +22,11 @@ public class EndGameEffect : MonoBehaviour
         Cursor.visible = true;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
-        {
             StartCoroutine(WaitForEnd());
-        }
     }
 
     /// <summary>

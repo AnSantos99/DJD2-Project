@@ -1,10 +1,13 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 
+/// <summary>
+/// Class the settings of each Audio source
+/// </summary>
 [System.Serializable]
 public class AudioAssets
 {
-    // Defines what is askde on the Inspector
+    // Defines what is asked on the Inspector
     // To edit in each Audio Source
     public string name;
 

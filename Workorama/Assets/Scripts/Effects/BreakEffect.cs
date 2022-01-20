@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Class specialized in making a breakeffect for a specific object
+/// </summary>
 public class BreakEffect : MonoBehaviour
 {
     // How many pieces should there be
@@ -20,10 +23,7 @@ public class BreakEffect : MonoBehaviour
     // Check if object has collided
     private bool collided;
 
-    private void Start()
-    {
-        collided = false;
-    }
+    private void Start() => collided = false;
 
     /// <summary>
     /// Detect collison and invoke the method to break object with delay
@@ -42,7 +42,6 @@ public class BreakEffect : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// Create all the pieces in every position 

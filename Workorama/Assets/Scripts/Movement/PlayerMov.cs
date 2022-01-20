@@ -1,16 +1,29 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class that handles the movement of the player
+/// </summary>
 public class PlayerMov : MonoBehaviour
 {
+    // Store inputName for Horizontal and Vertical Axis
     private string horizontalInputName = "Horizontal";
     private string verticalInputName = "Vertical";
 
+    // Determinate walk and run speed
     [SerializeField]private float walkSpeed, runSpeed;
+
+    // Determinate the buildup speed
     [SerializeField]private float runBuildUpSpeed;
+
+    // Determinate a specific key for running
     [SerializeField]private KeyCode runKey;
 
+    // Set the movement speed
     private float movementSpeed;
 
+    /// <summary>
+    /// Get access to the charactercontroller
+    /// </summary>
     private CharacterController charController;
 
     /// <summary>
@@ -18,8 +31,12 @@ public class PlayerMov : MonoBehaviour
     /// </summary>
     private Animator anim;
 
+    /// <summary>
+    /// Get the audioSource instances and methods
+    /// </summary>
     private AudioSource sm;
 
+    // Check if player is walking
     private bool walking;
 
     private void Awake()
@@ -29,17 +46,13 @@ public class PlayerMov : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
-    {
-        PlayerMovement();
-    }
+    private void Update() => PlayerMovement();
 
     /// <summary>
-    /// 
+    /// Set the playermovement
     /// </summary>
     private void PlayerMovement()
     {
-         
         // Receive input from "Horizontal" & "Vertical"
         // Convert it into Charactercontroller
         float horizInput = Input.GetAxis(horizontalInputName);
@@ -55,7 +68,7 @@ public class PlayerMov : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Set the players movement speed 
     /// </summary>
     private void SetMovementSpeed()
     {

@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that defines what the inventory is made of.
+/// </summary>
 public class Inventory
 {
     /// <summary>
@@ -8,8 +11,14 @@ public class Inventory
     /// </summary>
     private List<PuzzleItems> puzzleItemsList;
 
+    /// <summary>
+    /// Get access to canvasmanager for display of icons
+    /// </summary>
     private CanvasManager canvasManager;
 
+    /// <summary>
+    /// Get access to canvas
+    /// </summary>
     private Canvas canvas;
 
     public Inventory()
@@ -18,6 +27,9 @@ public class Inventory
         GetCanvas();
     }
 
+    /// <summary>
+    /// Method that gets the canvas of the game
+    /// </summary>
     private void GetCanvas()
     {
         canvas = (Canvas)GameObject.FindObjectOfType(typeof(Canvas));
@@ -30,6 +42,7 @@ public class Inventory
     /// <param name="puzzleItem"></param>
     public void AddToInventory(PuzzleItems puzzleItem) 
     {
+        // Add item to list
         puzzleItemsList.Add(puzzleItem);
 
         // Make it appear in canvas
@@ -37,13 +50,17 @@ public class Inventory
             puzzleItem.GetIcon());
     }
 
-    public void SelectItemFromInventory(PuzzleItems puzzleItem) 
-    {
+    /// <summary>
+    /// Method to be able to select an item from inventory (for the future)
+    /// </summary>
+    /// <param name="puzzleItem"></param>
+    public void SelectItemFromInventory(PuzzleItems puzzleItem) => 
         puzzleItemsList.Find((item) => puzzleItem);
-    }
+
 
     /// <summary>
-    /// Remove object from inventory
+    /// Remove object from inventory by removing it from the list and clearing
+    /// the canvas
     /// </summary>
     /// <param name="puzzleItem"></param>
     public void RemoveFromInventory(PuzzleItems puzzleItem) 

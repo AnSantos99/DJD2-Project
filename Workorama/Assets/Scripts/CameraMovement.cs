@@ -1,27 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that defines the camera movement for the main mechanic in game
+/// </summary>
 public class CameraMovement : MonoBehaviour
 {
+
     [SerializeField] private Transform cam2D;
     [SerializeField] private Transform player;
+
+    // Get the empty gameobject position of each side of the building
     [SerializeField] private Transform helpCamNorth;
     [SerializeField] private Transform helpCamSouth;
     [SerializeField] private Transform helpCamEast;
     [SerializeField] private Transform helpCamWest;
+
+    // Set the transition and rotation speed of the animation to switch from
+    // 2D to 3D and vise versa.
     [SerializeField] private float     transitionSpeed;
     [SerializeField] private float     rotationSpeed;
 
+    // Set player height
     [SerializeField] private float playerHeight;
 
+    // Get instances of playerlook and player movement to determinate the
+    // players whereabouts in the current moment
     private PlayerLook playerLook;
     private PlayerMov playerMov;
+
+    // Check the transitions to the player and to the 2D view
     private bool transitToPlayer = false;
     private bool transitTo2D = false;
+
     private int camMask = -1;
     private float currentTime;
 
+    /// <summary>
+    /// Get access to audiosource to plau sounds needed
+    /// </summary>
     [SerializeField]private AudioSource sm;
 
     void Start()
@@ -30,10 +47,7 @@ public class CameraMovement : MonoBehaviour
         playerMov = (PlayerMov)gameObject.GetComponentInParent(typeof(PlayerMov));
     }
 
-    void Update()
-    {
-        UpdateCamera();
-    }
+    void Update() => UpdateCamera();
 
     void LateUpdate()
     {
@@ -99,15 +113,9 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     public void SwitchCam()
     {
-        if (Check2DSwitch())
-        {
-            SwitchTo2D();
-            //Stop Player movement, cam movement
-        }
-        else
-        {
-            SwitchTo3D();
-        }
+        if (Check2DSwitch()) SwitchTo2D();
+
+        else SwitchTo3D();
     }
 
     /// <summary>
@@ -115,15 +123,13 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     private bool Check2DSwitch()
     {
-        if (transform.position.x < 250)
-        {
-            return true;
-        }
+        if (transform.position.x < 250) return true;
+
         return false;
     }
 
     /// <summary>
-    /// Switch to 2D view, and check witch wall have to be ignored
+    /// Switch to 2D view, and check which wall have to be ignored
     /// </summary>
     private void SwitchTo2D()
     {
@@ -162,19 +168,14 @@ public class CameraMovement : MonoBehaviour
             Debug.Log("There is something wrong with the logic");
         }
 
-        
         playerLook.enabled = false;
         playerMov.enabled = false;
-
     }
 
     /// <summary>
     /// Switch to 3D view
     /// </summary>
-    private void SwitchTo3D()
-    {
-        ReturnToPlayer();
-    }
+    private void SwitchTo3D() => ReturnToPlayer();
 
     /// <summary>
     /// //Update camera Culling mask to ignore walls
@@ -192,7 +193,6 @@ public class CameraMovement : MonoBehaviour
     {
         StartCoroutine(ShakeCamera(timeRotating));
     }
-
 
     /// <summary>
     /// Corroutine to shake the camera, making a eathquake efect

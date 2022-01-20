@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class to handle the Pause menu panel
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
+    /// <summary>
+    /// Get gameobject pausemenu
+    /// </summary>
     [SerializeField]
     private GameObject pauseMenu;
 
+    // Check if in paused state
     private bool isPaused;
 
     // Start is called before the first frame update
@@ -22,6 +27,9 @@ public class PauseMenu : MonoBehaviour
         SetTimeFreezer();
     }
 
+    /// <summary>
+    /// Method that unfreezes time during gameplay
+    /// </summary>
     private void SetTimeFreezer() 
     {
         if (!isPaused)
